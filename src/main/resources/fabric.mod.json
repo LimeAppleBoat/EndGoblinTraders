@@ -4,13 +4,14 @@
   "version": "${version}",
 
   "name": "End Goblin Traders",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "An Addon to Goblin Traders (FABRIC) that adds End Goblin Traders",
   "authors": [
-    "Me!"
+    "Jab125",
+    "hat"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/end-goblin-traders-fabric",
+    "sources": "https://github.com/Jab125/EndGoblinTraders/"
   },
 
   "license": "CC0-1.0",
