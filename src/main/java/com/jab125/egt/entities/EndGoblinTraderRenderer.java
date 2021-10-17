@@ -17,7 +17,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3f;
 
 public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEntity, GoblinTraderModel<GoblinTraderEntity>> {
-    public static final Identifier TEXTURE = EGobT.id("textures/entity/endgoblintrader/end_goblin_trader.png");
+
+    public static final Identifier TEXTURE = EGobT.endGoblinTexture();
+
 
     public EndGoblinTraderRenderer(EntityRendererFactory.Context context) {
         super(context, new GoblinTraderModel<>(context.getPart(GobTClient.GOBLIN_MODEL_LAYER)), .5F);

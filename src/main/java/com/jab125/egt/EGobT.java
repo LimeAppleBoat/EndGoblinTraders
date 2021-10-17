@@ -27,4 +27,13 @@ public class EGobT implements ModInitializer {
 	public static Identifier id(String path) {
 		return new Identifier(MODID, path);
 	}
+
+	public static Identifier endGoblinTexture() {
+
+		if (true) {
+			return EGobT.id("textures/entity/endgoblintrader/ragna_goblin.png");
+		} else {
+			return EGobT.id("textures/entity/endgoblintrader/end_goblin_trader.png");
+		}
+	}
 }
