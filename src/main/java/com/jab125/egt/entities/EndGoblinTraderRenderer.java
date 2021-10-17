@@ -18,8 +18,6 @@ import net.minecraft.util.math.Vec3f;
 
 public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEntity, GoblinTraderModel<GoblinTraderEntity>> {
 
-    public static final Identifier TEXTURE = EGobT.endGoblinTexture();
-
 
     public EndGoblinTraderRenderer(EntityRendererFactory.Context context) {
         super(context, new GoblinTraderModel<>(context.getPart(GobTClient.GOBLIN_MODEL_LAYER)), .5F);
@@ -28,7 +26,7 @@ public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEnt
 
     @Override
     public Identifier getTexture(AbstractGoblinEntity entity) {
-        return TEXTURE;
+        return EGobT.endGoblinTexture();
     }
 
     public void render(AbstractGoblinEntity mobEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {

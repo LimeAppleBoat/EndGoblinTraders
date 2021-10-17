@@ -23,6 +23,9 @@
     ],
     "client": [
       "com.jab125.egt.client.EGobTClient"
+    ],
+    "modmenu": [
+      "com.jab125.egt.config.ModMenuIntegration"
     ]
   },
   "mixins": [
