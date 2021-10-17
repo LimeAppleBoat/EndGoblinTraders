@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "endgoblintraders",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "End Goblin Traders",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -14,16 +14,19 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/endgoblintraders/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.jab125.egt.EGobT"
+    ],
+    "client": [
+      "com.jab125.egt.client.EGobTClient"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "endgoblintraders.mixins.json"
   ],
 
   "depends": {
