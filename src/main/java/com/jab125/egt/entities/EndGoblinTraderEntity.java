@@ -38,21 +38,21 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         super(entityType, world);
     }
 
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(0, new StunGoal(this));
-        this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(1, new FirePanicGoal(this, 0.5D));
-        this.goalSelector.add(2, new TradeWithPlayerGoal(this));
-        this.goalSelector.add(2, new LookAtCustomerGoal(this));
-        this.goalSelector.add(2, new AttackRevengeTargetGoal(this));
-        this.goalSelector.add(3, new EatFavouriteFoodGoal(this));
-        this.goalSelector.add(4, new FindFavouriteFoodGoal(this));
-        this.goalSelector.add(5, new TemptGoal(this, 0.44999998807907104D, Ingredient.ofItems(new ItemConvertible[]{this.getFavouriteFood().getItem()}), false));
-        this.goalSelector.add(6, new FollowPotentialCustomerGoal(this));
-        this.goalSelector.add(7, new WanderAroundFarGoal(this, 0.35D));
-        this.goalSelector.add(8, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
-    }
+//    @Override
+//    protected void initGoals() {
+//        this.goalSelector.add(0, new StunGoal(this));
+//        this.goalSelector.add(1, new SwimGoal(this));
+//        this.goalSelector.add(1, new FirePanicGoal(this, 0.5D));
+//        this.goalSelector.add(2, new TradeWithPlayerGoal(this));
+//        this.goalSelector.add(2, new LookAtCustomerGoal(this));
+//        this.goalSelector.add(2, new AttackRevengeTargetGoal(this));
+//        this.goalSelector.add(3, new EatFavouriteFoodGoal(this));
+//        this.goalSelector.add(4, new FindFavouriteFoodGoal(this));
+//        this.goalSelector.add(5, new TemptGoal(this, 0.44999998807907104D, Ingredient.ofItems(new ItemConvertible[]{this.getFavouriteFood().getItem()}), false));
+//        this.goalSelector.add(6, new FollowPotentialCustomerGoal(this));
+//        this.goalSelector.add(7, new WanderAroundFarGoal(this, 0.35D));
+//        this.goalSelector.add(8, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
+//    }
 
 
     @Override
@@ -64,12 +64,12 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
 
     @Override
     public boolean canAttackBack() {
-        return true;
+        return GobT.config.GOBLIN_HIT_BACK;
     }
 
     @Override
     public boolean canSwimToFood() {
-        return true;
+        return false;
     }
 
     @Override
@@ -124,7 +124,12 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     }
 
     @Override
-    public boolean isLeveledMerchant() {
+    public boolean isWet() {
+        return this.isTouchingWater();
+    }
+
+    public boolean hurtByWater() {
         return true;
     }
+
 }
