@@ -3,6 +3,7 @@ package com.jab125.egt.init;
 import com.google.common.collect.ImmutableMap;
 import com.jab125.egt.trades.TradeWithoutEmeraldItemStack;
 import com.jab125.egt.trades.TradeWithoutEmeraldPotionsNoAwkward;
+import com.jab125.egt.trades.TradeWithoutEmeraldSellMapFactory;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hat.gt.init.ModPotions;
 import net.hat.gt.trades.SellEnchantedItem;
@@ -10,9 +11,11 @@ import net.hat.gt.trades.TradeWithoutEmerald;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.map.MapIcon;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.village.TradeOffers;
+import net.minecraft.world.gen.feature.StructureFeature;
 
 import static net.hat.gt.init.ModTrades.copyToFastUtilMap;
 
@@ -67,6 +70,7 @@ public class ModTrades {
 
                 }, 4, new TradeOffers.Factory[]{
                         new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
+                        new TradeWithoutEmeraldSellMapFactory(Items.EMERALD, 32, StructureFeature.END_CITY, MapIcon.Type.RED_X, 1, 11),
                 }
         ));
     }

@@ -4,6 +4,8 @@
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_ALT_TEXTURE": "End Goblins use alt texture",
 
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
-  "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg"
+  "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg",
+
+  "filled_map.end_city": "End Explorer Map"
 
 }
