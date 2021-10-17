@@ -33,8 +33,6 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation("curse.maven:goblin-traders-fabric-534373:3492518")
-
 	modApi include("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
@@ -44,6 +42,7 @@ dependencies {
 	}
 
 	modImplementation("com.jab125:thonkutil-${project.thonkutil_version}")
+	modImplementation("net.hat:goblin-traders-1.1.1")
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
