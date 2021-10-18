@@ -66,6 +66,6 @@ public class TradeWithoutEmeraldItemStack implements Factory {
         firstBuy.setCount(price);
         secondBuy.setCount(secondPrice);
         sell.setCount(sellCount);
-        return new TradeOffer(this.firstBuy, this.secondBuy, this.sell, this.maxUses, this.experience, this.multiplier);
+        return new TradeOffer(new ItemStack(this.firstBuy.getItem(), this.price), new ItemStack(this.secondBuy.getItem(), this.secondPrice), this.sell, this.maxUses, this.experience, this.multiplier);
     }
 }

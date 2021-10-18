@@ -1,11 +1,21 @@
 {
-  "text.autoconfig.endgoblintraders.title": "End Goblin Traders",
+  "text.autoconfig.endgoblintraders.title": "End Goblin Traders (<RR> = Requires Game Restart)",
 
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_ALT_TEXTURE": "End Goblins use alt texture",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN": "End Goblins Spawn <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_HELL": "End Goblins Spawn in the Nether <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_END": "End Goblins Spawn in The End <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_OVERWORLD": "End Goblins Spawn in the Overworld <RR>",
+
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE": "End Goblin Spawn Weight <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D": "End Goblin Spawn Rate 1/x <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER": "End Goblins Die due to water",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE": "End Goblin Max Spawn Group Size <RR>",
 
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
   "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg",
 
-  "filled_map.end_city": "End Explorer Map"
+  "filled_map.endcity": "End Explorer Map",
+  "filled_map.end_fountain": "End Fountain Map"
 
 }

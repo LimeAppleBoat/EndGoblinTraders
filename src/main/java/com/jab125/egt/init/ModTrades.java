@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.jab125.egt.trades.TradeWithoutEmeraldItemStack;
 import com.jab125.egt.trades.TradeWithoutEmeraldPotionsNoAwkward;
 import com.jab125.egt.trades.TradeWithoutEmeraldSellMapFactory;
+import com.jab125.egt.trades.TradeWithoutEmeraldSellMapTo00Factory;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hat.gt.init.ModPotions;
 import net.hat.gt.trades.SellEnchantedItem;
@@ -47,7 +48,7 @@ public class ModTrades {
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.DIAMOND, 17, ModPotions.HASTE_EXTENDED, 50, 96),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.ENDER_PEARL, 10, Potions.SLOW_FALLING, 10, 26),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.EMERALD, 1, ModPotions.WEAK_NIGHT_VISION, 15, 26),
-                        new TradeWithoutEmerald(Items.END_STONE, 64, Items.AZALEA, 1, 2),
+                        new TradeWithoutEmerald(Items.END_STONE, 12, Items.AZALEA, 1, 2),
                         new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2),
                         new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0),
                         new TradeWithoutEmerald(Items.EMERALD, 1, Items.ACACIA_PLANKS, 5, 999, 0),
@@ -56,20 +57,23 @@ public class ModTrades {
                          *                                     UNCOMMON                                           *
                          * ************************************************************************************** */
                 }, 2, new TradeOffers.Factory[]{
-                        new TradeWithoutEmeraldItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH), 1, new ItemStack(Items.EMERALD), 1, 32, 20),
+                        new TradeWithoutEmeraldSellMapTo00Factory(Items.DIAMOND, 15, MapIcon.Type.RED_X, 1, 15),
+                        new TradeWithoutEmeraldItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH), 1, new ItemStack(Items.EMERALD), 15, 32, 20),
                         /* ************************************************************************************** *
                          *                                      RARE                                              *
                          * ************************************************************************************** */
                 }, 3, new TradeOffers.Factory[]{
                         new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 40),
-                        new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1)
+                        new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1),
+                        // If it spawns in the overworld
+                        new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 15, Items.ENDER_EYE, 2, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
 
                         /* ************************************************************************************** *
                          *                                    LEGENDARY                                           *
                          * ************************************************************************************** */
 
                 }, 4, new TradeOffers.Factory[]{
-                        new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
+                        //new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
                         new TradeWithoutEmeraldSellMapFactory(Items.EMERALD, 32, StructureFeature.END_CITY, MapIcon.Type.RED_X, 1, 11),
                 }
         ));

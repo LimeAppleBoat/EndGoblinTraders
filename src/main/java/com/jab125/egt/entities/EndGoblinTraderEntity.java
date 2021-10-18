@@ -1,28 +1,20 @@
 package com.jab125.egt.entities;
 
-import com.jab125.egt.entities.ai.AttackRevengeTargetGoal;
-import com.jab125.egt.entities.ai.ChasePlayerGoal;
+import com.jab125.egt.EGobT;
 import com.jab125.egt.init.ModTrades;
 import net.hat.gt.GobT;
 import net.hat.gt.entities.AbstractGoblinEntity;
-import net.hat.gt.entities.ai.*;
 import net.hat.gt.init.ModPotions;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.TippedArrowRecipe;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.village.TradeOfferList;
@@ -83,7 +75,7 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
             this.fillRecipesFromPool(tradeOfferList, factorys, ThreadLocalRandom.current().nextInt(4, 6 + 1));
             this.fillRecipesFromPool(tradeOfferList, factorys2, ThreadLocalRandom.current().nextInt(3, 5 + 1));
             this.fillRecipesFromPool(tradeOfferList, factorys3, ThreadLocalRandom.current().nextInt(1, 3 + 1));
-            this.fillRecipesFromPool(tradeOfferList, factorys4, ThreadLocalRandom.current().nextInt(25, 251 + 1));
+            this.fillRecipesFromPool(tradeOfferList, factorys4, ThreadLocalRandom.current().nextInt(-25, 1 + 1));
             }
 
     }
@@ -102,7 +94,7 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     @SuppressWarnings("unused") // Required for the query, IntelliJ marks it though.
     public static boolean canEndGoblinSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockPos blockPos = pos.down();
-        return spawnReason == SpawnReason.SPAWNER || ThreadLocalRandom.current().nextInt(1, GobT.config.VEIN_GOBLIN_SPAWN_RATE_D + 1) == 1;
+        return spawnReason == SpawnReason.SPAWNER || ThreadLocalRandom.current().nextInt(1, EGobT.config.END_GOBLIN_SPAWN_RATE_D + 1) == 1;
     }
 
     boolean isPlayerStaring(PlayerEntity player) {

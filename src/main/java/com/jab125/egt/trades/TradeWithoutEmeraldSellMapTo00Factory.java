@@ -12,38 +12,24 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
+import net.minecraft.world.dimension.DimensionOptions;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.feature.StructureFeature;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 import java.util.Random;
 
-public class TradeWithoutEmeraldSellMapFactory implements TradeOffers.Factory {
+public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factory {
     private final ItemStack firstBuy;
     private final int price;
-    private final ItemStack secondBuy;
-    private final int price2;
-    private final StructureFeature<?> structure;
     private final MapIcon.Type iconType;
     private final int maxUses;
     private final int experience;
 
-    public TradeWithoutEmeraldSellMapFactory(Item item, int price, StructureFeature<?> feature, MapIcon.Type iconType, int maxUses, int experience) {
+    public TradeWithoutEmeraldSellMapTo00Factory(Item item, int price, MapIcon.Type iconType, int maxUses, int experience) {
         this.firstBuy = new ItemStack(item);
         this.price = price;
-        this.secondBuy = new ItemStack(Items.COMPASS);
-        this.price2 = 0;
-        this.structure = feature;
-        this.iconType = iconType;
-        this.maxUses = maxUses;
-        this.experience = experience;
-    }
-    public TradeWithoutEmeraldSellMapFactory(Item item, int price, Item item2, int price2, StructureFeature<?> feature, MapIcon.Type iconType, int maxUses, int experience) {
-        this.firstBuy = new ItemStack(item);
-        this.price = price;
-        this.secondBuy = new ItemStack(item2);
-        this.price2 = price2;
-        this.structure = feature;
         this.iconType = iconType;
         this.maxUses = maxUses;
         this.experience = experience;
@@ -52,19 +38,17 @@ public class TradeWithoutEmeraldSellMapFactory implements TradeOffers.Factory {
     @Nullable
     public TradeOffer create(Entity entity, Random random) {
         this.firstBuy.setCount(price);
-        this.secondBuy.setCount(price2);
         if (!(entity.world instanceof ServerWorld)) {
             return null;
         } else {
             ServerWorld serverWorld = (ServerWorld)entity.world;
-            BlockPos blockPos = serverWorld.locateStructure(this.structure, entity.getBlockPos(), 100, true);
-            if (blockPos != null) {
+            BlockPos blockPos = new BlockPos(0, 90, 0);
+            if (blockPos != null && serverWorld.getDimension().equals(DimensionType.THE_END)) {
                 ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte)2, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", this.iconType);
-                String var10003 = this.structure.getName();
-                itemStack.setCustomName(new TranslatableText("filled_map." + var10003.toLowerCase(Locale.ROOT)));
-                return new TradeOffer(this.firstBuy, secondBuy, itemStack, this.maxUses, this.experience, 0.2F);
+                itemStack.setCustomName(new TranslatableText("filled_map." + "end_fountain"));
+                return new TradeOffer(this.firstBuy, new ItemStack(Items.COMPASS), itemStack, this.maxUses, this.experience, 0.2F);
             } else {
                 return null;
             }
