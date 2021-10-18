@@ -14,4 +14,6 @@ public class EndGoblinTradersConfig implements ConfigData {
     public int END_GOBLIN_SPAWN_RATE = 35;
     public int END_GOBLIN_SPAWN_RATE_D = 1;
     public int END_GOBLIN_GROUP_SIZE = 2;
+
+    public boolean D = true;
 }

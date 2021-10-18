@@ -11,9 +11,12 @@
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D": "End Goblin Spawn Rate 1/x <RR>",
   "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER": "End Goblins Die due to water",
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE": "End Goblin Max Spawn Group Size <RR>",
+  "text.autoconfig.endgoblintraders.option.D": "??? <RR>",
 
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
   "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg",
+  "item.endgoblintraders.mystery_item": "Mystery Item",
+  "item.endgoblintraders.mystery_item.desc": "Might have a use one day...",
 
   "filled_map.endcity": "End Explorer Map",
   "filled_map.end_fountain": "End Fountain Map"

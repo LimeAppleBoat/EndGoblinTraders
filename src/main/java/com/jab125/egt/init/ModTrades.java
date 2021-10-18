@@ -66,7 +66,7 @@ public class ModTrades {
                         new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 40),
                         new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1),
                         // If it spawns in the overworld
-                        new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 15, Items.ENDER_EYE, 2, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
+                        new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 48, Items.ENDER_EYE, 11, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
 
                         /* ************************************************************************************** *
                          *                                    LEGENDARY                                           *
