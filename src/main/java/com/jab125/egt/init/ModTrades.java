@@ -1,10 +1,7 @@
 package com.jab125.egt.init;
 
 import com.google.common.collect.ImmutableMap;
-import com.jab125.egt.trades.TradeWithoutEmeraldItemStack;
-import com.jab125.egt.trades.TradeWithoutEmeraldPotionsNoAwkward;
-import com.jab125.egt.trades.TradeWithoutEmeraldSellMapFactory;
-import com.jab125.egt.trades.TradeWithoutEmeraldSellMapTo00Factory;
+import com.jab125.egt.trades.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hat.gt.init.ModPotions;
 import net.hat.gt.trades.SellEnchantedItem;
@@ -65,16 +62,17 @@ public class ModTrades {
                 }, 3, new TradeOffers.Factory[]{
                         new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 40),
                         new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1),
-                        // If it spawns in the overworld
-                        new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 48, Items.ENDER_EYE, 11, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
 
                         /* ************************************************************************************** *
                          *                                    LEGENDARY                                           *
                          * ************************************************************************************** */
 
                 }, 4, new TradeOffers.Factory[]{
-                        //new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
+                        // new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
                         new TradeWithoutEmeraldSellMapFactory(Items.EMERALD, 32, StructureFeature.END_CITY, MapIcon.Type.RED_X, 1, 11),
+                        new OnlyInEndTradeWithoutEmerald(Items.NETHERITE_INGOT, 15, ModItems.TELEPORT_TO_SPAWN_SPELL, 1, 1, 26),
+                        // If it spawns in the overworld
+                        new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 48, Items.ENDER_EYE, 11, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
                 }
         ));
     }

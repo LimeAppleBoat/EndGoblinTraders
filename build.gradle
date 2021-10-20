@@ -41,8 +41,8 @@ dependencies {
 		exclude module: "fabric-api"
 	}
 
-	modImplementation("com.jab125:thonkutil-${project.thonkutil_version}")
-	modImplementation("net.hat:goblin-traders-1.1.1")
+	modApi include ("com.jab125:thonkutil-${project.thonkutil_version}")
+	modImplementation("net.hat:goblin-traders-1.2.0")
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
