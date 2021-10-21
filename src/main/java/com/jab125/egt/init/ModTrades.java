@@ -45,6 +45,7 @@ public class ModTrades {
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.DIAMOND, 17, ModPotions.HASTE_EXTENDED, 50, 96),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.ENDER_PEARL, 10, Potions.SLOW_FALLING, 10, 26),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.EMERALD, 1, ModPotions.WEAK_NIGHT_VISION, 15, 26),
+                        new TradeWithoutEmeraldPotionsNoAwkward(ModItems.OPAL, 1, ModPotions.BLINDNESS_EXTENDED_2, 12, 13),
                         new TradeWithoutEmerald(Items.END_STONE, 12, Items.AZALEA, 1, 2),
                         new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2),
                         new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0),
@@ -55,7 +56,7 @@ public class ModTrades {
                          * ************************************************************************************** */
                 }, 2, new TradeOffers.Factory[]{
                         new TradeWithoutEmeraldSellMapTo00Factory(Items.DIAMOND, 15, MapIcon.Type.RED_X, 1, 15),
-                        new TradeWithoutEmeraldItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH), 1, new ItemStack(Items.EMERALD), 15, 32, 20),
+                        new TradeWithoutEmeraldItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH), 1, new ItemStack(ModItems.OPAL), 1, 32, 20),
                         /* ************************************************************************************** *
                          *                                      RARE                                              *
                          * ************************************************************************************** */
@@ -69,8 +70,8 @@ public class ModTrades {
 
                 }, 4, new TradeOffers.Factory[]{
                         // new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
-                        new TradeWithoutEmeraldSellMapFactory(Items.EMERALD, 32, StructureFeature.END_CITY, MapIcon.Type.RED_X, 1, 11),
-                        new OnlyInEndTradeWithoutEmerald(Items.NETHERITE_INGOT, 15, ModItems.TELEPORT_TO_SPAWN_SPELL, 1, 1, 26),
+                        new TradeWithoutEmeraldSellMapFactory(ModItems.OPAL, 32, StructureFeature.END_CITY, MapIcon.Type.RED_X, 1, 11),
+                        new OnlyInEndTradeWithoutEmerald(ModItems.OPAL, 64, ModItems.TELEPORT_TO_SPAWN_SPELL, 1, 1, 26),
                         // If it spawns in the overworld
                         new TradeWithoutEmeraldSellMapFactory(Items.GOLD_INGOT, 48, Items.ENDER_EYE, 11, StructureFeature.STRONGHOLD, MapIcon.Type.RED_X, 1, 11),
                 }

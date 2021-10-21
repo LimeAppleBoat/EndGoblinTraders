@@ -16,8 +16,12 @@
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
   "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg",
   "item.endgoblintraders.teleport_to_spawn_spell": "Teleport Spell",
+  "item.endgoblintraders.teleport_to_spawn_spell.desc": "Might work, might not.",
   "item.endgoblintraders.mystery_item": "Mystery Item",
   "item.endgoblintraders.mystery_item.desc": "Might have a use one day...",
+  "item.endgoblintraders.opal": "Opal",
+
+  "block.endgoblintraders.end_opal_ore": "Opal Ore",
 
   "filled_map.stronghold": "Explorer Map",
   "filled_map.endcity": "End Explorer Map",

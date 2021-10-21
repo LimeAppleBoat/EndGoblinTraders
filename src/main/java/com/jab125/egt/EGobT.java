@@ -1,9 +1,7 @@
 package com.jab125.egt;
 
 import com.jab125.egt.config.EndGoblinTradersConfig;
-import com.jab125.egt.init.ModEntities;
-import com.jab125.egt.init.ModItems;
-import com.jab125.egt.init.ModSpawns;
+import com.jab125.egt.init.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
@@ -26,8 +24,10 @@ public class EGobT implements ModInitializer {
 		AutoConfig.register(EndGoblinTradersConfig.class, Toml4jConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(EndGoblinTradersConfig.class).getConfig();
 		ModEntities.registerEntities();
+		ModBlocks.registerBlocks();
 		ModItems.registerItems();
 		ModSpawns.init();
+		ModOres.registerOres();
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.

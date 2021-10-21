@@ -2,6 +2,7 @@ package com.jab125.egt.item.spell;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -21,6 +22,7 @@ public class TeleportToSpawnSpell extends Spell {
         super.inventoryTick(stack, world, entity, slot, selected);
         BlockPos pos = entity.getBlockPos();
         BlockState state = world.getBlockState(pos);
+        PlayerEntity playerEntity = (PlayerEntity) entity;
         if (world instanceof ServerWorld && !entity.hasVehicle() && !entity.hasPassengers() && entity.canUsePortals()) {
             RegistryKey<World> registryKey = World.OVERWORLD;
             ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);

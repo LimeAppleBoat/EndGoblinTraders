@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @Mixin(VeinGoblinTraderEntity.class)
 public class VeinGoblinTraderMixin {
-    @ModifyVariable(method = "getPreferredFoods", at = @At(value = "RETURN"), index = 2, ordinal = 0)
+    @ModifyVariable(method = "getPreferredFoods", at = @At(value = "RETURN"), index = 2, ordinal = 0, remap = false)
     private Collection<ItemStack> addEnchantedGoldenCarrot(Collection<ItemStack> collection) {
         collection.add(new ItemStack(ModItems.ENCHANTED_GOLDEN_CARROT));
         return collection;
