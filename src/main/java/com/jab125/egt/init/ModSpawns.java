@@ -27,10 +27,10 @@ public class ModSpawns {
             addMobSpawnToBiome(biome, SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.END_GOBLIN_TRADER, EGobT.config.END_GOBLIN_SPAWN_RATE, 1, EGobT.config.END_GOBLIN_GROUP_SIZE));
         }
         if (biome.getCategory().equals(Biome.Category.NETHER) && EGobT.config.END_GOBLIN_CAN_SPAWN_IN_HELL) {
-            addMobSpawnToBiome(biome, SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.END_GOBLIN_TRADER, EGobT.config.END_GOBLIN_SPAWN_RATE - 20, 1, EGobT.config.END_GOBLIN_GROUP_SIZE));
+            addMobSpawnToBiome(biome, SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.END_GOBLIN_TRADER, EGobT.config.END_GOBLIN_SPAWN_RATE_HELL, 1, EGobT.config.END_GOBLIN_GROUP_SIZE_HELL));
         }
         if ((biome.getCategory().equals(part2caves()) || biome.getCategory().equals(Biome.Category.DESERT) || biome.getCategory().equals(Biome.Category.PLAINS)) && EGobT.config.END_GOBLIN_CAN_SPAWN_IN_OVERWORLD) {
-            addMobSpawnToBiome(biome, SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.END_GOBLIN_TRADER, EGobT.config.END_GOBLIN_SPAWN_RATE - 20, 1, EGobT.config.END_GOBLIN_GROUP_SIZE));
+            addMobSpawnToBiome(biome, SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.END_GOBLIN_TRADER, EGobT.config.END_GOBLIN_SPAWN_RATE_OVERWORLD, 1, EGobT.config.END_GOBLIN_GROUP_SIZE_OVERWORLD));
         }
     }
     private static void addMobSpawnToBiome(Biome biome, SpawnGroup classification, SpawnSettings.SpawnEntry... spawners) {

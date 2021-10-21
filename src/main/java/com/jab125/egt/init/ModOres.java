@@ -1,5 +1,6 @@
 package com.jab125.egt.init;
 
+import com.jab125.egt.EGobT;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.Blocks;
@@ -30,9 +31,11 @@ public class ModOres {
             .repeat(1); // Number of veins per chunk
 
     public static void registerOres() {
-        RegistryKey<ConfiguredFeature<?, ?>> oreOpalEnd = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
-                new Identifier("endgoblintraders", "ore_opal_end"));
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreOpalEnd.getValue(), ORE_OPAL_END);
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, oreOpalEnd);
+        if (EGobT.config.GENERATE_OPAL_ORE) {
+            RegistryKey<ConfiguredFeature<?, ?>> oreOpalEnd = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY,
+                    new Identifier("endgoblintraders", "ore_opal_end"));
+            Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreOpalEnd.getValue(), ORE_OPAL_END);
+            BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, oreOpalEnd);
+        }
     }
 }

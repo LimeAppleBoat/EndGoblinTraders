@@ -6,11 +6,23 @@
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_HELL": "End Goblins Spawn in the Nether <RR>",
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_END": "End Goblins Spawn in The End <RR>",
   "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_OVERWORLD": "End Goblins Spawn in the Overworld <RR>",
+  "text.autoconfig.endgoblintraders.option.GENERATE_OPAL_ORE": "Generate Opal Ore <RR>",
 
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE": "End Goblin Spawn Weight <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D": "End Goblin Spawn Rate 1/x <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER": "End Goblins Die due to water",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE": "End Goblin Max Spawn Group Size <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE": "End Goblin Spawn Weight in The End <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D": "End Goblin Spawn Rate 1/x in The End <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER": "End Goblins Die due to water in The End",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE": "End Goblin Max Spawn Group Size in The End <RR>",
+
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_HELL": "End Goblin Spawn Weight in the Nether <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D_HELL": "End Goblin Spawn Rate 1/x in the Nether <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER_HELL": "End Goblins Die due to water in the Nether",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE_HELL": "End Goblin Max Spawn Group Size in the Nether <RR>",
+
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_OVERWORLD": "End Goblin Spawn Weight in the Overworld <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D_OVERWORLD": "End Goblin Spawn Rate 1/x in the Overworld <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER_OVERWORLD": "End Goblins Die due to water in the Overworld",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE_OVERWORLD": "End Goblin Max Spawn Group Size in the Overworld <RR>",
+
   "text.autoconfig.endgoblintraders.option.D": "??? <RR>",
 
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
@@ -20,6 +32,7 @@
   "item.endgoblintraders.mystery_item": "Mystery Item",
   "item.endgoblintraders.mystery_item.desc": "Might have a use one day...",
   "item.endgoblintraders.opal": "Opal",
+  "item.endgoblintraders.opal.disabled": "Since ore generation is disabled, you can get opal from trades :)",
 
   "block.endgoblintraders.end_opal_ore": "Opal Ore",
 

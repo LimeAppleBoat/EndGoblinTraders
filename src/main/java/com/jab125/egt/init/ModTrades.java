@@ -1,6 +1,7 @@
 package com.jab125.egt.init;
 
 import com.google.common.collect.ImmutableMap;
+import com.jab125.egt.EGobT;
 import com.jab125.egt.trades.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.hat.gt.init.ModPotions;
@@ -50,6 +51,7 @@ public class ModTrades {
                         new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2),
                         new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0),
                         new TradeWithoutEmerald(Items.EMERALD, 1, Items.ACACIA_PLANKS, 5, 999, 0),
+                        (!EGobT.config.GENERATE_OPAL_ORE) ? new TradeWithoutEmerald(Items.GOLD_INGOT, 15, ModItems.OPAL, 1, 99999, 0) : null,
 
                         /* ************************************************************************************** *
                          *                                     UNCOMMON                                           *
