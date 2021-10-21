@@ -11,7 +11,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/end-goblin-traders-fabric",
-    "sources": "https://github.com/Jab125/EndGoblinTraders/"
+    "sources": "https://github.com/Jab125/EndGoblinTraders",
+    "issues": "https://github.com/Jab125/EndGoblinTraders/issues"
   },
 
   "license": "CC0-1.0",
@@ -41,9 +42,6 @@
     "thonkutil": ">=1.1.1",
     "cloth-config2": ">=5.0.38",
     "java": ">=16"
-  },
-  "suggests": {
-    "another-mod": "*"
   },
   "accessWidener": "EGobTFabric.accesswidener"
 }
