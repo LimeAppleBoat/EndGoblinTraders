@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.jab125.egt.EGobT;
 import com.jab125.egt.trades.*;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.hat.gt.GobT;
 import net.hat.gt.init.ModPotions;
 import net.hat.gt.trades.SellEnchantedItem;
 import net.hat.gt.trades.TradeWithoutEmerald;
@@ -13,8 +14,10 @@ import net.minecraft.item.Items;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.world.gen.feature.StructureFeature;
+import org.jetbrains.annotations.Nullable;
 
 import static net.hat.gt.init.ModTrades.copyToFastUtilMap;
 
@@ -48,10 +51,10 @@ public class ModTrades {
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.EMERALD, 1, ModPotions.WEAK_NIGHT_VISION, 15, 26),
                         new TradeWithoutEmeraldPotionsNoAwkward(ModItems.OPAL, 1, ModPotions.BLINDNESS_EXTENDED_2, 12, 13),
                         new TradeWithoutEmerald(Items.END_STONE, 12, Items.AZALEA, 1, 2),
+                        (EGobT.config.GENERATE_OPAL_ORE) ? new NullTrade() : new TradeWithoutEmerald(Items.GOLD_INGOT, 15, ModItems.OPAL, 1, 15, 0),
                         new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2),
-                        new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0),
+                        (GobT.config.EASTER_EGGS) ? new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0) : new NullTrade(),
                         new TradeWithoutEmerald(Items.EMERALD, 1, Items.ACACIA_PLANKS, 5, 999, 0),
-                        (!EGobT.config.GENERATE_OPAL_ORE) ? new TradeWithoutEmerald(Items.GOLD_INGOT, 15, ModItems.OPAL, 1, 99999, 0) : null,
 
                         /* ************************************************************************************** *
                          *                                     UNCOMMON                                           *
