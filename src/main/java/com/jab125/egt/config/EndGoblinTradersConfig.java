@@ -17,11 +17,11 @@ public class EndGoblinTradersConfig implements ConfigData {
     public int END_GOBLIN_GROUP_SIZE = 2;
 
     public int END_GOBLIN_SPAWN_RATE_OVERWORLD = 15;
-    public int END_GOBLIN_SPAWN_RATE_D_OVERWORLD = 1;
+
     public int END_GOBLIN_GROUP_SIZE_OVERWORLD = 2;
 
     public int END_GOBLIN_SPAWN_RATE_HELL = 15;
-    public int END_GOBLIN_SPAWN_RATE_D_HELL = 1;
+
     public int END_GOBLIN_GROUP_SIZE_HELL = 2;
 
     public boolean D = true;
