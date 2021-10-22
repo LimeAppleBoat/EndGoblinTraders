@@ -32,7 +32,7 @@
   "item.endgoblintraders.mystery_item": "Mystery Item",
   "item.endgoblintraders.mystery_item.desc": "Might have a use one day...",
   "item.endgoblintraders.opal": "Opal",
-  "item.endgoblintraders.opal.disabled": "Since ore generation is disabled, you can get opal from trades :)",
+  "block.endgoblintraders.end_opal_ore.disabled": "Since ore generation is disabled, you can get opal from trades :)",
 
   "block.endgoblintraders.end_opal_ore": "Opal Ore",
 
