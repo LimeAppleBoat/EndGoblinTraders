@@ -1,0 +1,88 @@
+{
+  "replace": false,
+  "trades": [
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:potion",
+        "count": 1,
+        "nbt": "{Potion:\"goblintraders:gtdig_speed_extended\"}"
+      },
+      "payment_item": {
+        "item": "minecraft:diamond",
+        "count": 17
+      },
+      "max_trades": 50,
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:potion",
+        "count": 1,
+        "nbt": "{Potion:\"minecraft:slow_falling\"}"
+      },
+      "payment_item": {
+        "item": "minecraft:ender_pearl",
+        "count": 10
+      },
+      "max_trades": 10,
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:potion",
+        "count": 1,
+        "nbt": "{Potion:\"goblintraders:gtweak_night_vision\"}"
+      },
+      "payment_item": {
+        "item": "minecraft:emerald",
+        "count": 1
+      },
+      "max_trades": 24,
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:potion",
+        "count": 1,
+        "nbt": "{Potion:\"goblintraders:gtblindness_extended_2\"}"
+      },
+      "payment_item": {
+        "item": "endgoblintraders:opal",
+        "count": 1
+      },
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:azalea",
+        "count": 1
+      },
+      "payment_item": {
+        "item": "minecraft:end_stone",
+        "count": 12
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 128,
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:phantom_membrane",
+        "count": 1
+      },
+      "payment_item": {
+        "item": "minecraft:ender_pearl",
+        "count": 16
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 164,
+      "experience": 10
+    }
+  ]
+}

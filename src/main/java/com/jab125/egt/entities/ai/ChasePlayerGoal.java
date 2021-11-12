@@ -23,7 +23,8 @@ public class ChasePlayerGoal extends Goal {
             return false;
         } else {
             double d = this.target.squaredDistanceTo(this.endergoblin);
-            return !(d > 256.0D) && this.endergoblin.getIsPlayerStaring((PlayerEntity) this.target);
+            //return !(d > 256.0D) && this.endergoblin.getIsPlayerStaring((PlayerEntity) this.target);
+            return false;
         }
     }
 

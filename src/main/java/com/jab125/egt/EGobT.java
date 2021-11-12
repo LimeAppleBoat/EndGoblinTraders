@@ -1,15 +1,23 @@
 package com.jab125.egt;
 
 import com.jab125.egt.config.EndGoblinTradersConfig;
+import com.jab125.egt.datagen.DataGeneration;
 import com.jab125.egt.init.*;
+import com.jab125.util.datagen.DataGeneraton;
+import com.jab125.util.tradehelper.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.hat.gt.GobT;
 import net.hat.gt.config.GoblinTradersConfig;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
 
 public class EGobT implements ModInitializer {
 	public static final String MODID = "endgoblintraders";
@@ -18,9 +26,11 @@ public class EGobT implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 	public static EndGoblinTradersConfig config;
+	private static final boolean doDataGen = false;
 
 	@Override
 	public void onInitialize() {
+		TradeManager.instance().registerTrader(ModEntities.END_GOBLIN_TRADER);
 		AutoConfig.register(EndGoblinTradersConfig.class, Toml4jConfigSerializer::new);
 		config = AutoConfig.getConfigHolder(EndGoblinTradersConfig.class).getConfig();
 		ModEntities.registerEntities();
@@ -28,11 +38,17 @@ public class EGobT implements ModInitializer {
 		ModItems.registerItems();
 		ModSpawns.init();
 		ModOres.registerOres();
+		ModEnchantments.registerEnchantments();
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+
+		if (EGobT.doDataGen) {
+		    DataGenerator dataGenerator = new DataGenerator(new File("../src/main/generated/resources").toPath(), null);
+		    DataGeneration.registerCommonProviders(dataGenerator);
+		}
 	}
 
 	public static Identifier id(String path) {

@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "trades": [
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:netherite_sword",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "payment_item": {
+        "item": "minecraft:dragon_head",
+        "count": 25
+      },
+      "secondary_payment_item": {
+        "item": "minecraft:diamond_sword",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 32,
+      "experience": 10,
+      "enchantments": [
+        {
+          "id": "endgoblintraders:opal_infused",
+          "level": 1
+        }
+      ]
+    }
+  ]
+}

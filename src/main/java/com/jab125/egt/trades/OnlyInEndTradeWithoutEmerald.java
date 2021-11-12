@@ -1,12 +1,11 @@
 package com.jab125.egt.trades;
 
 import net.hat.gt.trades.TradeWithoutEmerald;
+import net.hat.gt.trades.UpgradedTradeOffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.village.TradeOffer;
-import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,15 +17,15 @@ public class OnlyInEndTradeWithoutEmerald extends TradeWithoutEmerald {
     }
 
     public OnlyInEndTradeWithoutEmerald(ItemConvertible item, int $, Item sellItem, int sellCount, int experience) {
-        super(item, $, sellItem, sellCount, experience);
+        super(item, $, sellItem, sellCount, experience, 0);
     }
 
     public OnlyInEndTradeWithoutEmerald(ItemConvertible item, int $, ItemConvertible item2, int sC, Item sellItem, int sellCount, int maxUses, int experience) {
-        super(item, $, item2, sC, sellItem, sellCount, maxUses, experience);
+        super(item, $, item2, sC, sellItem, sellCount, maxUses, experience, 0);
     }
 
     @Override
-    public @Nullable TradeOffer create(Entity entity, Random random) {
+    public @Nullable UpgradedTradeOffer create(Entity entity, Random random) {
         if (!(entity.world instanceof ServerWorld)) {
             return null;
         } else {

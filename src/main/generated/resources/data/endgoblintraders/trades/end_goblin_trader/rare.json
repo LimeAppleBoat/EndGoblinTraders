@@ -1,0 +1,41 @@
+{
+  "replace": false,
+  "trades": [
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 3
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 64,
+      "experience": 10
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:stick",
+        "count": 1,
+        "nbt": "{display:{Name:\u0027{\"extra\":[{\"text\":\" \"},{\"translate\":\"item.minecraft.stick\"}],\"translate\":\"enchantment.minecraft.knockback\"}\u0027}}"
+      },
+      "payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 3
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 64,
+      "experience": 10,
+      "enchantments": [
+        {
+          "id": "minecraft:knockback",
+          "level": 2
+        }
+      ]
+    }
+  ]
+}

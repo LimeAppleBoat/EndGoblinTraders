@@ -50,11 +50,11 @@ public class ModTrades {
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.ENDER_PEARL, 10, Potions.SLOW_FALLING, 10, 26),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.EMERALD, 1, ModPotions.WEAK_NIGHT_VISION, 15, 26),
                         new TradeWithoutEmeraldPotionsNoAwkward(ModItems.OPAL, 1, ModPotions.BLINDNESS_EXTENDED_2, 12, 13),
-                        new TradeWithoutEmerald(Items.END_STONE, 12, Items.AZALEA, 1, 2),
-                        (EGobT.config.GENERATE_OPAL_ORE) ? new NullTrade() : new TradeWithoutEmerald(Items.GOLD_INGOT, 15, ModItems.OPAL, 1, 15, 0),
-                        new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2),
-                        (GobT.config.EASTER_EGGS) ? new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0) : new NullTrade(),
-                        new TradeWithoutEmerald(Items.EMERALD, 1, Items.ACACIA_PLANKS, 5, 999, 0),
+                        new TradeWithoutEmerald(Items.END_STONE, 12, Items.AZALEA, 1, 2, 2),
+                        (EGobT.config.GENERATE_OPAL_ORE) ? new NullTrade() : new TradeWithoutEmerald(Items.GOLD_INGOT, 15, ModItems.OPAL, 1, 15, 0, 0),
+                        new TradeWithoutEmerald(Items.ENDER_PEARL, 16, Items.PHANTOM_MEMBRANE, 1, 64, 2, 2),
+                        (GobT.config.EASTER_EGGS) ? new TradeWithoutEmerald(Items.ACACIA_BOAT, 1, Items.ACACIA_PLANKS, 5, 999, 0, 0) : new NullTrade(),
+                        new TradeWithoutEmerald(Items.EMERALD, 1, Items.ACACIA_PLANKS, 5, 999, 0, 0),
 
                         /* ************************************************************************************** *
                          *                                     UNCOMMON                                           *
@@ -66,8 +66,8 @@ public class ModTrades {
                          *                                      RARE                                              *
                          * ************************************************************************************** */
                 }, 3, new TradeOffers.Factory[]{
-                        new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 40),
-                        new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1),
+                        new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 4, 40),
+                        new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1, 1),
 
                         /* ************************************************************************************** *
                          *                                    LEGENDARY                                           *

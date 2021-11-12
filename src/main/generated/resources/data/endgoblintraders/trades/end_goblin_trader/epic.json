@@ -1,0 +1,81 @@
+{
+  "replace": false,
+  "trades": [
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1,
+        "nbt": "{Damage:0,display:{Name:\u0027{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_pickaxe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}\u0027}}"
+      },
+      "payment_item": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "secondary_payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 24
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 32,
+      "experience": 10,
+      "enchantments": [
+        {
+          "id": "minecraft:efficiency",
+          "level": 7
+        },
+        {
+          "id": "minecraft:unbreaking",
+          "level": 7
+        },
+        {
+          "id": "minecraft:fortune",
+          "level": 5
+        },
+        {
+          "id": "minecraft:mending",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "type": "goblintraders:basic",
+      "offer_item": {
+        "item": "minecraft:diamond_axe",
+        "count": 1,
+        "nbt": "{Damage:0,display:{Name:\u0027{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}\u0027}}"
+      },
+      "payment_item": {
+        "item": "minecraft:diamond_axe",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "secondary_payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 24
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 32,
+      "experience": 10,
+      "enchantments": [
+        {
+          "id": "minecraft:efficiency",
+          "level": 7
+        },
+        {
+          "id": "minecraft:unbreaking",
+          "level": 7
+        },
+        {
+          "id": "minecraft:sharpness",
+          "level": 7
+        },
+        {
+          "id": "minecraft:mending",
+          "level": 1
+        }
+      ]
+    }
+  ]
+}

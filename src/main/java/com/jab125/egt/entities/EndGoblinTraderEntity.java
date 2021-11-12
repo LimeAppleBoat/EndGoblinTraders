@@ -1,7 +1,9 @@
 package com.jab125.egt.entities;
 
 import com.jab125.egt.EGobT;
+import com.jab125.egt.init.ModItems;
 import com.jab125.egt.init.ModTrades;
+import com.jab125.thonkutil.util.Util;
 import net.hat.gt.GobT;
 import net.hat.gt.entities.AbstractGoblinEntity;
 import net.hat.gt.init.ModPotions;
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.village.TradeOfferList;
@@ -22,6 +25,8 @@ import net.minecraft.village.TradeOffers;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -30,7 +35,15 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         super(entityType, world);
     }
 
-//    @Override
+    @Override
+    public Collection<ItemStack> getPreferredFoods() {
+        Collection<ItemStack> preferredFoods = new ArrayList();
+        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH)));
+        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING)));
+        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING)));
+        return preferredFoods;
+    }
+    //    @Override
 //    protected void initGoals() {
 //        this.goalSelector.add(0, new StunGoal(this));
 //        this.goalSelector.add(1, new SwimGoal(this));
@@ -64,21 +77,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return false;
     }
 
-    @Override
-    protected void fillRecipes() {
-        TradeOffers.Factory[] factorys = ModTrades.END_GOBLIN_TRADER_TRADES.get(1);
-        TradeOffers.Factory[] factorys2 = ModTrades.END_GOBLIN_TRADER_TRADES.get(2);
-        TradeOffers.Factory[] factorys3 = ModTrades.END_GOBLIN_TRADER_TRADES.get(3);
-        TradeOffers.Factory[] factorys4 = ModTrades.END_GOBLIN_TRADER_TRADES.get(4);
-        if (factorys != null && factorys2 != null && factorys3 != null) {
-            TradeOfferList tradeOfferList = this.getOffers();
-            this.fillRecipesFromPool(tradeOfferList, factorys, ThreadLocalRandom.current().nextInt(4, 6 + 1));
-            this.fillRecipesFromPool(tradeOfferList, factorys2, ThreadLocalRandom.current().nextInt(3, 5 + 1));
-            this.fillRecipesFromPool(tradeOfferList, factorys3, ThreadLocalRandom.current().nextInt(1, 3 + 1));
-            this.fillRecipesFromPool(tradeOfferList, factorys4, ThreadLocalRandom.current().nextInt(25, 251 + 1));
-            }
-
-    }
 
     @Override
     public void tick(){
@@ -97,24 +95,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return spawnReason == SpawnReason.SPAWNER || ThreadLocalRandom.current().nextInt(1, EGobT.config.END_GOBLIN_SPAWN_RATE_D + 1) == 1;
     }
 
-    boolean isPlayerStaring(PlayerEntity player) {
-        ItemStack itemStack = (ItemStack)player.getInventory().armor.get(3);
-        if (itemStack.isOf(Blocks.CARVED_PUMPKIN.asItem())) {
-            return false;
-        } else {
-            Vec3d vec3d = player.getRotationVec(1.0F).normalize();
-            Vec3d vec3d2 = new Vec3d(this.getX() - player.getX(), this.getEyeY() - player.getEyeY(), this.getZ() - player.getZ());
-            double d = vec3d2.length();
-            vec3d2 = vec3d2.normalize();
-            double e = vec3d.dotProduct(vec3d2);
-            return e > 1.0D - 0.025D / d && player.canSee(this);
-        }
-    }
-
-    public boolean getIsPlayerStaring(PlayerEntity playerEntity) {
-        return isPlayerStaring(playerEntity);
-    }
-
     @Override
     public boolean isWet() {
         return this.isTouchingWater();
@@ -124,4 +104,8 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return true;
     }
 
+    @Override
+    protected void addToInventoryOnSpawn() {
+        this.getInventory().addStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING));
+    }
 }
