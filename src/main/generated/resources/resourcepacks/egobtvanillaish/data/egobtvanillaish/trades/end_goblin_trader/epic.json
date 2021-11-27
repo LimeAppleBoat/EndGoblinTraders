@@ -1,5 +1,5 @@
 {
-  "replace": false,
+  "replace": true,
   "trades": [
     {
       "type": "goblintraders:upgraded_basic",
@@ -15,7 +15,7 @@
       },
       "secondary_payment_item": {
         "item": "minecraft:netherite_ingot",
-        "count": 24
+        "count": 12
       },
       "price_multiplier": 0.0,
       "max_trades": 32,
@@ -24,15 +24,15 @@
       "enchantments": [
         {
           "id": "minecraft:efficiency",
-          "level": 7
+          "level": 5
         },
         {
           "id": "minecraft:unbreaking",
-          "level": 7
+          "level": 3
         },
         {
           "id": "minecraft:fortune",
-          "level": 5
+          "level": 3
         },
         {
           "id": "minecraft:mending",
@@ -54,7 +54,7 @@
       },
       "secondary_payment_item": {
         "item": "minecraft:netherite_ingot",
-        "count": 24
+        "count": 12
       },
       "price_multiplier": 0.0,
       "max_trades": 32,
@@ -63,15 +63,15 @@
       "enchantments": [
         {
           "id": "minecraft:efficiency",
-          "level": 7
+          "level": 5
         },
         {
           "id": "minecraft:unbreaking",
-          "level": 7
+          "level": 3
         },
         {
           "id": "minecraft:sharpness",
-          "level": 5
+          "level": 3
         },
         {
           "id": "minecraft:mending",

@@ -1,5 +1,6 @@
-package com.jab125.egt.init;
 
+package com.jab125.egt.init;
+/*
 import com.google.common.collect.ImmutableMap;
 import com.jab125.egt.EGobT;
 import com.jab125.egt.trades.*;
@@ -21,8 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.hat.gt.init.ModTrades.copyToFastUtilMap;
 
-
+*/
 public class ModTrades {
+    /*
     public static Int2ObjectMap<TradeOffers.Factory[]> END_GOBLIN_TRADER_TRADES;
     private static final ItemStack BROKEN_ELYTRA = new ItemStack(Items.ELYTRA);
 
@@ -41,10 +43,10 @@ public class ModTrades {
                  * The format is: PaymentItem, Price, SecondItem, SecondPrice, SellItem, SellCount, MaxUses, ExperienceGained
                  *
                  * I've also went ahead and made everything public in here, so feel free to access it without an accesswidener :)
-                 */
+                 * /
                 /* ************************************************************************************** *
                  *                                     COMMON                                             *
-                 * ************************************************************************************** */
+                 * ************************************************************************************** * /
                 1, new TradeOffers.Factory[]{
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.DIAMOND, 17, ModPotions.HASTE_EXTENDED, 50, 96),
                         new TradeWithoutEmeraldPotionsNoAwkward(Items.ENDER_PEARL, 10, Potions.SLOW_FALLING, 10, 26),
@@ -58,20 +60,20 @@ public class ModTrades {
 
                         /* ************************************************************************************** *
                          *                                     UNCOMMON                                           *
-                         * ************************************************************************************** */
+                         * ************************************************************************************** * /
                 }, 2, new TradeOffers.Factory[]{
                         new TradeWithoutEmeraldSellMapTo00Factory(Items.DIAMOND, 15, MapIcon.Type.RED_X, 1, 15),
                         new TradeWithoutEmeraldItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH), 1, new ItemStack(ModItems.OPAL), 1, 32, 20),
                         /* ************************************************************************************** *
                          *                                      RARE                                              *
-                         * ************************************************************************************** */
+                         * ************************************************************************************** * /
                 }, 3, new TradeOffers.Factory[]{
                         new TradeWithoutEmerald(Items.NETHERITE_INGOT, 3, Items.DIAMOND_PICKAXE, 1, 64, 4, 40),
                         new TradeWithoutEmerald(Items.PURPUR_BLOCK, 64, Items.PURPUR_BLOCK, 64, Items.NETHERITE_INGOT, 1, 1, 1, 1),
 
                         /* ************************************************************************************** *
                          *                                    LEGENDARY                                           *
-                         * ************************************************************************************** */
+                         * ************************************************************************************** * /
 
                 }, 4, new TradeOffers.Factory[]{
                         // new TradeWithoutEmeraldItemStack(new ItemStack(Items.NETHERITE_INGOT), 64, BROKEN_ELYTRA, 1, 0, 112),
@@ -82,4 +84,6 @@ public class ModTrades {
                 }
         ));
     }
+    */
 }
+

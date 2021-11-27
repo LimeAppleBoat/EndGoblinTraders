@@ -1,0 +1,21 @@
+{
+  "replace": true,
+  "trades": [
+    {
+      "type": "goblintraders:upgraded_basic",
+      "offer_item": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 3
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 64,
+      "merchant_experience": 4,
+      "player_experience": 40
+    }
+  ]
+}

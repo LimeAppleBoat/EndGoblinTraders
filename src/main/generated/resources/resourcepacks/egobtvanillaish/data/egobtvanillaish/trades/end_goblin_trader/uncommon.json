@@ -1,5 +1,5 @@
 {
-  "replace": false,
+  "replace": true,
   "trades": [
     {
       "type": "goblintraders:upgraded_basic",
@@ -10,7 +10,7 @@
       "payment_item": {
         "item": "minecraft:potion",
         "count": 1,
-        "nbt": "{Potion:\"goblintraders:powerful_instant_health\"}"
+        "nbt": "{Potion:\"minecraft:strong_healing\"}"
       },
       "price_multiplier": 0.0,
       "max_trades": 32,

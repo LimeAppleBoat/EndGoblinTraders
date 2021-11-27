@@ -4,8 +4,13 @@
   "package": "com.jab125.egt.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "EnchantmentHelperMixin",
+    "EntityMixin",
+    "FabricPackMixinTemp",
+    "InfinityEnchantMixin",
     "SpawnRestrictionMixin",
-    "VeinGoblinTraderMixin"
+    "VeinGoblinTraderMixin",
+    "WaterBucketMixin"
   ],
   "client": [
     "ItemMixin"

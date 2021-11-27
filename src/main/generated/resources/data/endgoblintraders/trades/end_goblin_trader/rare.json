@@ -2,7 +2,7 @@
   "replace": false,
   "trades": [
     {
-      "type": "goblintraders:basic",
+      "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:diamond_pickaxe",
         "count": 1,
@@ -14,10 +14,11 @@
       },
       "price_multiplier": 0.0,
       "max_trades": 64,
-      "experience": 10
+      "merchant_experience": 4,
+      "player_experience": 40
     },
     {
-      "type": "goblintraders:basic",
+      "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:stick",
         "count": 1,
@@ -29,7 +30,8 @@
       },
       "price_multiplier": 0.0,
       "max_trades": 64,
-      "experience": 10,
+      "merchant_experience": 4,
+      "player_experience": 40,
       "enchantments": [
         {
           "id": "minecraft:knockback",

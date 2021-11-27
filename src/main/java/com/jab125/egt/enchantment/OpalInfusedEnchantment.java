@@ -1,11 +1,14 @@
 package com.jab125.egt.enchantment;
 
+import com.jab125.egt.init.ModItems;
 import net.minecraft.enchantment.DamageEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.function.Consumer;
@@ -28,13 +31,14 @@ public class OpalInfusedEnchantment extends DamageEnchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (!user.world.isClient()) {
+        if (!user.world.isClient() && !user.getMainHandStack().isOf(ModItems.DURABILITY_TOTEM)) {
             if ((int) (Math.random() * 13) == -1) {
                 LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, target.world);
                 lightningEntity.setPosition(target.getPos());
                 target.world.spawnEntity(lightningEntity);
             }
-            user.getMainHandStack().damage(user.getMainHandStack().getMaxDamage() / 10 - 1, user, livingEntity -> {
+            user.getMainHandStack().damage(user.getMainHandStack().getMaxDamage() / 10 - 1, user, (e) -> {
+                e.sendToolBreakStatus(Hand.MAIN_HAND);
             });
         }
         super.onTargetDamaged(user, target, level);

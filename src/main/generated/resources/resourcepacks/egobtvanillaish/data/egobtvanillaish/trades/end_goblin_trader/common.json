@@ -1,12 +1,12 @@
 {
-  "replace": false,
+  "replace": true,
   "trades": [
     {
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:potion",
         "count": 1,
-        "nbt": "{Potion:\"goblintraders:dig_speed_extended\"}"
+        "nbt": "{Potion:\"goblintraders:dig_speed\"}"
       },
       "payment_item": {
         "item": "minecraft:diamond",

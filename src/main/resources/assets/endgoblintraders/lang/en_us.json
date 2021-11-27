@@ -1,29 +1,36 @@
 {
   "text.autoconfig.endgoblintraders.title": "End Goblin Traders (<RR> = Requires Game Restart)",
 
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_ALT_TEXTURE": "End Goblins use alt texture",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN": "End Goblins Spawn <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_HELL": "End Goblins Spawn in the Nether <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_END": "End Goblins Spawn in The End <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_CAN_SPAWN_IN_OVERWORLD": "End Goblins Spawn in the Overworld <RR>",
+  "text.autoconfig.endgoblintraders.category.default": "Misc",
+  "text.autoconfig.endgoblintraders.category.end_goblin_trader_config": "End Goblin Trader",
+
   "text.autoconfig.endgoblintraders.option.GENERATE_OPAL_ORE": "Generate Opal Ore <RR>",
 
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE": "End Goblin Spawn Weight in The End <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D": "End Goblin Spawn Rate 1/x in The End <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER": "End Goblins Die due to water in The End",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE": "End Goblin Max Spawn Group Size in The End <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS": "The Overworld Settings <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS": "The Nether Settings <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS": "The End Settings <RR>",
 
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_HELL": "End Goblin Spawn Weight in the Nether <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D_HELL": "End Goblin Spawn Rate 1/x in the Nether <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER_HELL": "End Goblins Die due to water in the Nether",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE_HELL": "End Goblin Max Spawn Group Size in the Nether <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.END_GOBLIN_TRADER_ALT_TEXTURE": "End Goblin Traders use ragna goblin texture",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.HIT_BACK": "Hit Back",
 
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_OVERWORLD": "End Goblin Spawn Weight in the Overworld <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_SPAWN_RATE_D_OVERWORLD": "End Goblin Spawn Rate 1/x in the Overworld <RR>",
-  "text.autoconfig.endgoblintraders.option.END_GOBLINS_DIE_IN_WATER_OVERWORLD": "End Goblins Die due to water in the Overworld",
-  "text.autoconfig.endgoblintraders.option.END_GOBLIN_GROUP_SIZE_OVERWORLD": "End Goblin Max Spawn Group Size in the Overworld <RR>",
 
-  "text.autoconfig.endgoblintraders.option.D": "??? <RR>",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MIN_HEIGHT": "Min Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MAX_HEIGHT": "Max Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.CAN_SPAWN": "Can Spawn",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_DELAY": "Spawn Delay",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_CHANCE": "Spawn Chance",
+
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MIN_HEIGHT": "Min Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MAX_HEIGHT": "Max Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.CAN_SPAWN": "Can Spawn",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_DELAY": "Spawn Delay",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_CHANCE": "Spawn Chance",
+
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MIN_HEIGHT": "Min Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MAX_HEIGHT": "Max Height",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.CAN_SPAWN": "Can Spawn",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_DELAY": "Spawn Delay",
+  "text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_CHANCE": "Spawn Chance",
 
   "entity.endgoblintraders.end_goblin_trader": "End Goblin Trader",
   "item.endgoblintraders.end_goblin_trader_spawn_egg": "End Goblin Trader Spawn Egg",

@@ -35,7 +35,7 @@ public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEnt
         {
             matrixStack.translate(0, -0.15, 0);
         }
-        if(mobEntity.isStunned() && mobEntity.isAlive() && GobT.config.GOBLINS_FALL)
+        if(mobEntity.isStunned() && mobEntity.isAlive() && GobT.config.ALL_GOBLIN_TRADERS_CONFIG.FALL)
         {
             float progress = Math.min(10F, mobEntity.getFallCounter() + g) / 10F;
             matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-mobEntity.getStunRotation()));

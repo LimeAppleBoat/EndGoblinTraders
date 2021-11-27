@@ -3,21 +3,25 @@ package com.jab125.egt;
 import com.jab125.egt.config.EndGoblinTradersConfig;
 import com.jab125.egt.datagen.DataGeneration;
 import com.jab125.egt.init.*;
-import com.jab125.util.datagen.DataGeneraton;
 import com.jab125.util.tradehelper.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.hat.gt.GobT;
-import net.hat.gt.config.GoblinTradersConfig;
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
+import net.hat.gt.spawning.GoblinTraderSpawner;
+import net.hat.gt.spawning.SpawnHandler;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.Objects;
 
 public class EGobT implements ModInitializer {
 	public static final String MODID = "endgoblintraders";
@@ -36,9 +40,20 @@ public class EGobT implements ModInitializer {
 		ModEntities.registerEntities();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
-		ModSpawns.init();
 		ModOres.registerOres();
+		ModSounds.registerSounds();
 		ModEnchantments.registerEnchantments();
+		final LambdaFix<Boolean> loaded = new LambdaFix<>(false);
+		ServerWorldEvents.LOAD.register((minecraftServer, world) -> {
+			if (loaded.get()) return;
+			SpawnHandler.addToSpawners(DimensionType.THE_NETHER_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderHell", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+			SpawnHandler.addToSpawners(DimensionType.THE_END_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderSky", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+			SpawnHandler.addToSpawners(DimensionType.OVERWORLD_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderEarth", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+			SpawnHandler.getSpawners().forEach((identifier, goblinTraderSpawner) -> {
+				System.out.println(identifier.toString() + ": " + goblinTraderSpawner);
+			});
+			loaded.set(true);
+		});
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
@@ -49,6 +64,8 @@ public class EGobT implements ModInitializer {
 		    DataGenerator dataGenerator = new DataGenerator(new File("../src/main/generated/resources").toPath(), null);
 		    DataGeneration.registerCommonProviders(dataGenerator);
 		}
+
+		ResourceManagerHelper.registerBuiltinResourcePack(id("egobtvanillaish"), Objects.requireNonNull(FabricLoader.getInstance().getModContainer(MODID)).get(), ResourcePackActivationType.NORMAL);
 	}
 
 	public static Identifier id(String path) {
@@ -57,7 +74,7 @@ public class EGobT implements ModInitializer {
 
 	public static Identifier endGoblinTexture() {
 
-		if (config.END_GOBLIN_ALT_TEXTURE) {
+		if (EGobT.config.END_GOBLIN_TRADER_CONFIG.END_GOBLIN_TRADER_ALT_TEXTURE) {
 			return EGobT.id("textures/entity/endgoblintrader/ragna_goblin.png");
 		} else {
 			return EGobT.id("textures/entity/endgoblintrader/end_goblin_trader.png");

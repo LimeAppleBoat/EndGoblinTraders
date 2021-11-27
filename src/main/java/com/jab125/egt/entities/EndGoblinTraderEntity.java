@@ -2,6 +2,7 @@ package com.jab125.egt.entities;
 
 import com.jab125.egt.EGobT;
 import com.jab125.egt.init.ModItems;
+import com.jab125.egt.init.ModSounds;
 import com.jab125.egt.init.ModTrades;
 import com.jab125.thonkutil.util.Util;
 import net.hat.gt.GobT;
@@ -10,6 +11,7 @@ import net.hat.gt.init.ModPotions;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +20,9 @@ import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.village.TradeOfferList;
@@ -42,6 +47,26 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING)));
         preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING)));
         return preferredFoods;
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.IDLE_GRUNT_ECHO;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.IDLE_GRUNT_ECHO;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ModSounds.IDLE_GRUNT_ECHO;
+    }
+
+    @Override
+    protected SoundEvent getTradingSound(boolean sold) {
+        return (sold ? ModSounds.IDLE_GRUNT_ECHO : ModSounds.ANNOYED_GRUNT_ECHO);
     }
     //    @Override
 //    protected void initGoals() {
@@ -69,7 +94,8 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
 
     @Override
     public boolean canAttackBack() {
-        return GobT.config.GOBLIN_HIT_BACK;
+        //return GobT.config.GOBLIN_HIT_BACK;
+        return EGobT.config.END_GOBLIN_TRADER_CONFIG.HIT_BACK;
     }
 
     @Override
@@ -92,12 +118,12 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     @SuppressWarnings("unused") // Required for the query, IntelliJ marks it though.
     public static boolean canEndGoblinSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         BlockPos blockPos = pos.down();
-        return spawnReason == SpawnReason.SPAWNER || ThreadLocalRandom.current().nextInt(1, EGobT.config.END_GOBLIN_SPAWN_RATE_D + 1) == 1;
+        return spawnReason == SpawnReason.SPAWNER || ThreadLocalRandom.current().nextInt(1, EGobT.config.END_GOBLIN_TRADER_CONFIG.END_GOBLIN_SPAWN_RATE_D + 1) == 1;
     }
 
     @Override
     public boolean isWet() {
-        return this.isTouchingWater();
+        return this.isTouchingWater()  || this.world.getBlockState(this.getBlockPos()).isOf(Blocks.BUBBLE_COLUMN);
     }
 
     public boolean hurtByWater() {
@@ -107,5 +133,50 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     @Override
     protected void addToInventoryOnSpawn() {
         this.getInventory().addStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING));
+    }
+
+    @Override
+    public int minSpawnHeight() {
+        int minSpawnHeight = 0;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) minSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MIN_HEIGHT;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) minSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MIN_HEIGHT;
+        if (!world.isClient() && world.getRegistryKey() == World.END) minSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MIN_HEIGHT;
+        return minSpawnHeight;
+    }
+
+    @Override
+    public int maxSpawnHeight() {
+        int maxSpawnHeight = 0;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) maxSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MAX_HEIGHT;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) maxSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MAX_HEIGHT;
+        if (!world.isClient() && world.getRegistryKey() == World.END) maxSpawnHeight = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MAX_HEIGHT;
+        return maxSpawnHeight;
+    }
+
+    @Override
+    public int spawnDelay() {
+        int spawnDelay = 2147483647;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) spawnDelay = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_DELAY;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) spawnDelay = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_DELAY;
+        if (!world.isClient() && world.getRegistryKey() == World.END) spawnDelay = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_DELAY;
+        return spawnDelay;
+    }
+
+    @Override
+    public int spawnChance() {
+        int spawnChance = 0;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_CHANCE;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_CHANCE;
+        if (!world.isClient() && world.getRegistryKey() == World.END) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_CHANCE;
+        return spawnChance;
+    }
+
+    @Override
+    public boolean canSpawn() {
+        boolean spawnChance = false;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.CAN_SPAWN;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.CAN_SPAWN;
+        if (!world.isClient() && world.getRegistryKey() == World.END) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.CAN_SPAWN;
+        return spawnChance;
     }
 }
