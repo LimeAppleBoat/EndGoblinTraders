@@ -13,4 +13,11 @@ public class LambdaFix<T> {
     public T get() {
         return this.object;
     }
+
+    @Override
+    public String toString() {
+        return "LambdaFix{" +
+                "object=" + object +
+                '}';
+    }
 }
