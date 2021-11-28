@@ -3,6 +3,7 @@ package com.jab125.egt;
 import com.jab125.egt.config.EndGoblinTradersConfig;
 import com.jab125.egt.datagen.DataGeneration;
 import com.jab125.egt.init.*;
+import com.jab125.limeappleboat.gobt.api.GobTEvents;
 import com.jab125.util.tradehelper.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -14,7 +15,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.hat.gt.spawning.GoblinTraderSpawner;
 import net.hat.gt.spawning.SpawnHandler;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 import org.apache.logging.log4j.LogManager;
@@ -54,6 +58,17 @@ public class EGobT implements ModInitializer {
 			});
 			loaded.set(true);
 		});
+
+		GobTEvents.ON_ATTEMPT_SPAWN.register(((entityType, serverWorld, blockPos) -> {
+			if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.OVERWORLD)) {
+				System.out.println("YAAAA");
+				return serverWorld.getLightLevel(blockPos) < 7 ? ActionResult.PASS : ActionResult.FAIL;
+			}
+			if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
+				return blockPos.isWithinDistance(new BlockPos(0, 90, 0), 750) ? ActionResult.FAIL : ActionResult.PASS;
+			}
+			return ActionResult.PASS;
+		}));
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
@@ -65,7 +80,7 @@ public class EGobT implements ModInitializer {
 		    DataGeneration.registerCommonProviders(dataGenerator);
 		}
 
-		ResourceManagerHelper.registerBuiltinResourcePack(id("egobtvanillaish"), Objects.requireNonNull(FabricLoader.getInstance().getModContainer(MODID)).get(), ResourcePackActivationType.NORMAL);
+		//ResourceManagerHelper.registerBuiltinResourcePack(id("gobtvanillaish"), Objects.requireNonNull(FabricLoader.getInstance().getModContainer(MODID)).get(), ResourcePackActivationType.NORMAL);
 	}
 
 	public static Identifier id(String path) {

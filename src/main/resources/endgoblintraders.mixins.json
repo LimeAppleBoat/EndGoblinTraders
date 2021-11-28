@@ -8,7 +8,6 @@
     "EntityMixin",
     "FabricPackMixinTemp",
     "InfinityEnchantMixin",
-    "SpawnRestrictionMixin",
     "VeinGoblinTraderMixin",
     "WaterBucketMixin"
   ],

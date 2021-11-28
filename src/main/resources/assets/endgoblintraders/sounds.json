@@ -1,15 +1,15 @@
 {
   "annoyed_grunt_echo": {
     "sounds": [
-      "endgoblintraders:annoyed_grunt1_echo",
-      "endgoblintraders:annoyed_grunt2_echo"
+      "endgoblintraders:annoyed_grunt_1_echo",
+      "endgoblintraders:annoyed_grunt_2_echo"
     ]
   },
   "idle_grunt_echo": {
     "sounds": [
-      "endgoblintraders:idle_grunt1_echo",
-      "endgoblintraders:idle_grunt2_echo",
-      "endgoblintraders:idle_grunt3_echo"
+      "endgoblintraders:idle_grunt_1_echo",
+      "endgoblintraders:idle_grunt_2_echo",
+      "endgoblintraders:idle_grunt_3_echo"
     ]
   }
 }

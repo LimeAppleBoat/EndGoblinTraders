@@ -20,4 +20,8 @@ public class LambdaFix<T> {
                 "object=" + object +
                 '}';
     }
+
+    public String objectToString() {
+        return object.toString();
+    }
 }
