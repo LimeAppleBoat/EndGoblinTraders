@@ -6,6 +6,8 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.hat.gt.GobT;
 import net.hat.gt.config.GoblinTradersConfig;
+import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 
 @Config(name = EGobT.MODID)
 @Config.Gui.CategoryBackground(category = "end_goblin_trader_config", background = "textures/block/end_stone.png")
@@ -24,7 +26,7 @@ public class EndGoblinTradersConfig implements ConfigData {
         public int END_GOBLIN_SPAWN_RATE_D = 1;
 
         @ConfigEntry.Gui.CollapsibleObject
-        public DimensionSettings THE_OVERWORLD_SETTINGS = new DimensionSettings(0, 63, true, 10, 48000);
+        public DimensionSettings THE_OVERWORLD_SETTINGS = new DimensionSettings(DimensionType.OVERWORLD.getMinimumY(), 255, true, 10, 48000);
         @ConfigEntry.Gui.CollapsibleObject
         public DimensionSettings THE_NETHER_SETTINGS = new DimensionSettings(0, 127, true, 25, 32000);
         @ConfigEntry.Gui.CollapsibleObject

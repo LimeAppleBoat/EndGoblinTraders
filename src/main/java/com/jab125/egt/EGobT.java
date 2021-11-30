@@ -61,9 +61,12 @@ public class EGobT implements ModInitializer {
 
 		GobTEvents.ON_ATTEMPT_SPAWN.register(((entityType, serverWorld, blockPos) -> {
 			if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.OVERWORLD)) {
-				System.out.println("YAAAA");
-				return serverWorld.getLightLevel(blockPos) < 7 ? ActionResult.PASS : ActionResult.FAIL;
+				/** End Goblin Traders can spawn up to y=255, this is just a test to make sure they don't spawn in broad daylight */
+				return serverWorld.getLightLevel(blockPos) < 5 && !serverWorld.isSkyVisible(blockPos) ? ActionResult.PASS : ActionResult.FAIL;
 			}
+			/**
+			 * Prevents End Goblin Traders from spawning the central end island
+			 */
 			if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
 				return blockPos.isWithinDistance(new BlockPos(0, 90, 0), 750) ? ActionResult.FAIL : ActionResult.PASS;
 			}
@@ -73,7 +76,7 @@ public class EGobT implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		LOGGER.info("Hello Fabric world!");
+		//LOGGER.info("Hello Fabric world!");
 
 		if (EGobT.doDataGen) {
 		    DataGenerator dataGenerator = new DataGenerator(new File("../src/main/generated/resources").toPath(), null);
