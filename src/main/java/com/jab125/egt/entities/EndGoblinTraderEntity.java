@@ -49,25 +49,25 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return preferredFoods;
     }
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return ModSounds.IDLE_GRUNT_ECHO;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.IDLE_GRUNT_ECHO;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return ModSounds.IDLE_GRUNT_ECHO;
-    }
-
-    @Override
-    protected SoundEvent getTradingSound(boolean sold) {
-        return (sold ? ModSounds.IDLE_GRUNT_ECHO : ModSounds.ANNOYED_GRUNT_ECHO);
-    }
+//    @Override
+//    protected SoundEvent getAmbientSound() {
+//        return ModSounds.IDLE_GRUNT_ECHO;
+//    }
+//
+//    @Override
+//    protected SoundEvent getHurtSound(DamageSource source) {
+//        return ModSounds.IDLE_GRUNT_ECHO;
+//    }
+//
+//    @Override
+//    protected SoundEvent getDeathSound() {
+//        return ModSounds.IDLE_GRUNT_ECHO;
+//    }
+//
+//    @Override
+//    protected SoundEvent getTradingSound(boolean sold) {
+//        return (sold ? ModSounds.IDLE_GRUNT_ECHO : ModSounds.ANNOYED_GRUNT_ECHO);
+//    }
     //    @Override
 //    protected void initGoals() {
 //        this.goalSelector.add(0, new StunGoal(this));
@@ -173,10 +173,10 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
 
     @Override
     public boolean canSpawn() {
-        boolean spawnChance = false;
-        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.CAN_SPAWN;
-        if (!world.isClient() && world.getRegistryKey() == World.NETHER) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.CAN_SPAWN;
-        if (!world.isClient() && world.getRegistryKey() == World.END) spawnChance = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.CAN_SPAWN;
-        return spawnChance;
+        boolean canSpawn = false;
+        if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD) canSpawn = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.CAN_SPAWN;
+        if (!world.isClient() && world.getRegistryKey() == World.NETHER) canSpawn = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.CAN_SPAWN;
+        if (!world.isClient() && world.getRegistryKey() == World.END) canSpawn = EGobT.config.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.CAN_SPAWN;
+        return canSpawn;
     }
 }
