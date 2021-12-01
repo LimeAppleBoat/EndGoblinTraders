@@ -46,4 +46,12 @@ public class EndGoblinTradersConfig implements ConfigData {
             this.SPAWN_DELAY = spawnDelay;
         }
     }
+
+    @Override
+    public void validatePostLoad() throws ValidationException {
+        ConfigData.super.validatePostLoad();
+        if (this.GENERATE_OPAL_ORE) {
+            this.GENERATE_OPAL_ORE = false;
+        }
+    }
 }
