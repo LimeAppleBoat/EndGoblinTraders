@@ -3,7 +3,6 @@ package com.jab125.egt.entities.ai;
 import com.jab125.egt.entities.EndGoblinTraderEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.EnumSet;

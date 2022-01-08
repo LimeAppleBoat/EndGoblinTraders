@@ -1,7 +1,6 @@
 package com.jab125.egt.init;
 
 import com.jab125.egt.EGobT;
-import net.hat.gt.GobT;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

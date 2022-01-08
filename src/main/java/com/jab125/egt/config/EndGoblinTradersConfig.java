@@ -4,9 +4,6 @@ import com.jab125.egt.EGobT;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import net.hat.gt.GobT;
-import net.hat.gt.config.GoblinTradersConfig;
-import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 @Config(name = EGobT.MODID)
@@ -32,12 +29,14 @@ public class EndGoblinTradersConfig implements ConfigData {
         @ConfigEntry.Gui.CollapsibleObject
         public DimensionSettings THE_END_SETTINGS = new DimensionSettings(0, 255, true, 75, 24000);
     }
+
     public static class DimensionSettings {
         public int MIN_HEIGHT;
         public int MAX_HEIGHT;
         public boolean CAN_SPAWN;
         public int SPAWN_CHANCE;
         public int SPAWN_DELAY;
+
         public DimensionSettings(int minHeight, int maxHeight, boolean canSpawn, int spawnChance, int spawnDelay) {
             this.MIN_HEIGHT = minHeight;
             this.MAX_HEIGHT = maxHeight;
@@ -50,8 +49,5 @@ public class EndGoblinTradersConfig implements ConfigData {
     @Override
     public void validatePostLoad() throws ValidationException {
         ConfigData.super.validatePostLoad();
-        if (this.GENERATE_OPAL_ORE) {
-            this.GENERATE_OPAL_ORE = false;
-        }
     }
 }

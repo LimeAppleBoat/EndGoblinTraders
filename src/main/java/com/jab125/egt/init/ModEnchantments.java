@@ -1,9 +1,7 @@
 package com.jab125.egt.init;
 
 import com.jab125.egt.enchantment.OpalInfusedEnchantment;
-import net.minecraft.enchantment.DamageEnchantment;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

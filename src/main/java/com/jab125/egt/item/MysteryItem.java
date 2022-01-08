@@ -1,10 +1,6 @@
 package com.jab125.egt.item;
 
-import com.jab125.egt.EGobT;
 import com.jab125.egt.util.Util;
-import com.terraformersmc.modmenu.util.mod.fabric.FabricMod;
-import net.fabricmc.loader.api.FabricLoader;
-import net.hat.gt.GobT;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

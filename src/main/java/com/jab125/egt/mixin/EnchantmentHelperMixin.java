@@ -3,7 +3,6 @@ package com.jab125.egt.mixin;
 import com.jab125.egt.init.ModItems;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityGroup;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

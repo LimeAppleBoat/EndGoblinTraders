@@ -1,16 +1,15 @@
 package com.jab125.egt.init;
 
 import com.jab125.egt.entities.EndGoblinTraderEntity;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.hat.gt.entities.GoblinTraderEntity;
-import net.hat.gt.entities.VeinGoblinTraderEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import static net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register;
 
 public class ModEntities {
 
@@ -19,7 +18,7 @@ public class ModEntities {
     );
 
     public static void registerEntities() {
-        FabricDefaultAttributeRegistry.register(END_GOBLIN_TRADER, EndGoblinTraderEntity.createMobAttributes()
+        register(END_GOBLIN_TRADER, EndGoblinTraderEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7D));

@@ -38,6 +38,7 @@ public class TradeWithoutEmeraldSellMapFactory implements TradeOffers.Factory {
         this.maxUses = maxUses;
         this.experience = experience;
     }
+
     public TradeWithoutEmeraldSellMapFactory(Item item, int price, Item item2, int price2, StructureFeature<?> feature, MapIcon.Type iconType, int maxUses, int experience) {
         this.firstBuy = new ItemStack(item);
         this.price = price;
@@ -56,10 +57,10 @@ public class TradeWithoutEmeraldSellMapFactory implements TradeOffers.Factory {
         if (!(entity.world instanceof ServerWorld)) {
             return null;
         } else {
-            ServerWorld serverWorld = (ServerWorld)entity.world;
+            ServerWorld serverWorld = (ServerWorld) entity.world;
             BlockPos blockPos = serverWorld.locateStructure(this.structure, entity.getBlockPos(), 100, true);
             if (blockPos != null) {
-                ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte)2, true, true);
+                ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", this.iconType);
                 String var10003 = this.structure.getName();

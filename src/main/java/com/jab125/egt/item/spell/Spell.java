@@ -1,12 +1,8 @@
 package com.jab125.egt.item.spell;
 
-import net.minecraft.client.gui.tooltip.BundleTooltipComponent;
-import net.minecraft.client.item.BundleTooltipData;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.BundleItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.BaseText;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;

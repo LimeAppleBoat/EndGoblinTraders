@@ -5,17 +5,17 @@
 
 package com.jab125.egt.trades;
 
-import java.util.Random;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers.Factory;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 public class TradeWithoutEmeraldPotionsNoAwkward implements Factory {
     private final ItemStack firstBuy;

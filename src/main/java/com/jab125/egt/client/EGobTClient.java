@@ -7,7 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.hat.gt.entities.GobinTraderRenderer;
 import net.hat.gt.entities.GoblinTraderModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
@@ -15,6 +14,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class EGobTClient implements ClientModInitializer {
     public static final EntityModelLayer END_GOBLIN_MODEL_LAYER = new EntityModelLayer(new Identifier("endgoblintraders", "egoblin"), "goblin_render_layer");
+
     /**
      * Runs the mod initializer on the client environment.
      */

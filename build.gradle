@@ -22,6 +22,9 @@ repositories {
 	flatDir { dirs 'lib' }
 	maven { url "https://maven.terraformersmc.com/releases" }
 	maven { url "https://maven.shedaniel.me/" }
+	maven {
+		url = "https://minecraft.guntram.de/maven/"
+	}
 }
 
 dependencies {
@@ -41,14 +44,28 @@ dependencies {
 		exclude module: "fabric-api"
 	}
 
-	modApi ("com.jab125:thonkutil-${project.thonkutil_version}")
-	modImplementation("net.hat:goblin-traders-1.4.0")
+	modApi ("com.jab125:thonkutil-potions-v0-1.2.5")
+	modApi ("com.jab125:thonkutil-capes-v1-1.2.0")
+	modApi ("com.jab125:thonkutil-legacy-1.0.7")
+	modApi ("com.jab125:thonkutil-trades-v1-1.1.5")
+	modApi ("com.jab125:thonkutil-base-1.4.0")
+	modImplementation "de.guntram.mcmod:crowdin-translate:1.4+1.18"
+	modImplementation("net.hat:goblin-traders-1.5")
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }
 loom {
 	accessWidenerPath =  file("src/main/resources/EGobTFabric.accesswidener")
+	runs {
+		data {
+			server()
+			name "Data Gen"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+			ideConfigGenerated = true
+		}
+	}
 }
 processResources {
 	inputs.property "version", project.version

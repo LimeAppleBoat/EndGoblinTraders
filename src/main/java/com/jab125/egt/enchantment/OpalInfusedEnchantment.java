@@ -8,10 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.math.MathHelper;
-
-import java.util.function.Consumer;
 
 public class OpalInfusedEnchantment extends DamageEnchantment {
     public OpalInfusedEnchantment(Rarity weight, int typeIndex, EquipmentSlot... slots) {

@@ -11,6 +11,7 @@ public class NullTrade implements TradeOffers.Factory {
     public NullTrade() {
 
     }
+
     @Nullable
     @Override
     public TradeOffer create(Entity entity, Random random) {

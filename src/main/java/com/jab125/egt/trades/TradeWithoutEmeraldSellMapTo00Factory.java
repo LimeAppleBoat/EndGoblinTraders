@@ -12,12 +12,9 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
-import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.feature.StructureFeature;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Locale;
 import java.util.Random;
 
 public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factory {
@@ -41,10 +38,10 @@ public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factor
         if (!(entity.world instanceof ServerWorld)) {
             return null;
         } else {
-            ServerWorld serverWorld = (ServerWorld)entity.world;
+            ServerWorld serverWorld = (ServerWorld) entity.world;
             BlockPos blockPos = new BlockPos(0, 90, 0);
             if (blockPos != null && serverWorld.getDimension().equals(DimensionType.THE_END)) {
-                ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte)2, true, true);
+                ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", this.iconType);
                 itemStack.setCustomName(new TranslatableText("filled_map." + "end_fountain"));
