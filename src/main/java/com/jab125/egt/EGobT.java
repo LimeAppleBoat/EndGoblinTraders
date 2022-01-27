@@ -70,11 +70,13 @@ public class EGobT implements ModInitializer {
                 if (!(serverWorld.getLightLevel(blockPos) < 5 && !serverWorld.isSkyVisible(blockPos)))
                     result = ActionResult.FAIL;
             }
+
+            BlockPos pos = new BlockPos(blockPos.getX(), 90, blockPos.getZ());
 			/*
 			  Prevents End Goblin Traders from spawning the central end island
 			 */
             if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
-                if (blockPos.isWithinDistance(new BlockPos(0, 90, 0), 750)) result = ActionResult.FAIL;
+                if (pos.isWithinDistance(new BlockPos(0, 90, 0), 750)) result = ActionResult.FAIL;
             }
 			/*
 			  Prevents End Goblin Traders from spawning on Bedrock
