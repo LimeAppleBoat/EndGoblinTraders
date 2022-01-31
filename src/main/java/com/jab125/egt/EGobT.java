@@ -62,7 +62,6 @@ public class EGobT implements ModInitializer {
             });
             loaded.set(true);
         });
-
         GobTEvents.ON_ATTEMPT_SPAWN.register(((entityType, serverWorld, blockPos) -> {
             ActionResult result = ActionResult.PASS;
             if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.OVERWORLD)) {
@@ -70,11 +69,10 @@ public class EGobT implements ModInitializer {
                 if (!(serverWorld.getLightLevel(blockPos) < 5 && !serverWorld.isSkyVisible(blockPos)))
                     result = ActionResult.FAIL;
             }
-
-            BlockPos pos = new BlockPos(blockPos.getX(), 90, blockPos.getZ());
 			/*
 			  Prevents End Goblin Traders from spawning the central end island
 			 */
+            BlockPos pos = new BlockPos(blockPos.getX(), 90, blockPos.getZ());
             if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
                 if (pos.isWithinDistance(new BlockPos(0, 90, 0), 750)) result = ActionResult.FAIL;
             }
