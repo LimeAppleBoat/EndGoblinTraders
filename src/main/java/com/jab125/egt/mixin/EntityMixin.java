@@ -27,7 +27,7 @@ public class EntityMixin {
     private void tryTotemInject(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         livingEntity = (LivingEntity) (Object) this;
         if (source.isOutOfWorld()) {
-            cir.cancel();
+            //cir.cancel();
         } else {
             ItemStack itemStack = null;
             Hand[] var4 = Hand.values();
