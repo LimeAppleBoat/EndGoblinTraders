@@ -1,0 +1,51 @@
+{
+	"text.autoconfig.endgoblintraders.title": "末地哥布林商人 (<RR> = 需要重启游戏)",
+  
+	"text.autoconfig.endgoblintraders.category.default": "杂项",
+	"text.autoconfig.endgoblintraders.category.end_goblin_trader_config": "末地哥布林商人",
+  
+	"text.autoconfig.endgoblintraders.option.GENERATE_OPAL_ORE": "生成猫眼石矿石 <RR>",
+  
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS": "主世界设置 <RR>",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS": "下界设置 <RR>",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS": "末地设置 <RR>",
+  
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.END_GOBLIN_TRADER_ALT_TEXTURE": "末地哥布林商人使用 ragna goblin 纹理",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.HIT_BACK": "击退",
+  
+  
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MIN_HEIGHT": "最小高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.MAX_HEIGHT": "最大高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.CAN_SPAWN": "可以生成",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_DELAY": "生成延迟",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_OVERWORLD_SETTINGS.SPAWN_CHANCE": "生成概率",
+  
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MIN_HEIGHT": "最小高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.MAX_HEIGHT": "最大高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.CAN_SPAWN": "可以生成",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_DELAY": "生成延迟",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_NETHER_SETTINGS.SPAWN_CHANCE": "生成概率",
+  
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MIN_HEIGHT": "最小高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.MAX_HEIGHT": "最大高度",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.CAN_SPAWN": "可以生成",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_DELAY": "生成延迟",
+	"text.autoconfig.endgoblintraders.option.END_GOBLIN_TRADER_CONFIG.THE_END_SETTINGS.SPAWN_CHANCE": "生成概率",
+  
+	"entity.endgoblintraders.end_goblin_trader": "末地哥布林商人",
+	"item.endgoblintraders.end_goblin_trader_spawn_egg": "末地哥布林商人刷怪蛋",
+	"item.endgoblintraders.teleport_to_spawn_spell": "传送魔法",
+	"item.endgoblintraders.teleport_to_spawn_spell.desc": "可能有效，可能无效",
+	"item.endgoblintraders.mystery_item": "神秘物品",
+	"item.endgoblintraders.mystery_item.desc": "某一天可能有用...",
+	"item.endgoblintraders.opal": "猫眼石",
+	"block.endgoblintraders.end_opal_ore.disabled": "由于矿石生成被禁用，您可以从交易中获得猫眼石 :)",
+  
+	"block.endgoblintraders.end_opal_ore": "猫眼石矿石",
+  
+	"filled_map.stronghold": "探险者地图",
+	"filled_map.endcity": "末地探险者地图",
+	"filled_map.end_fountain": "末地喷泉地图",
+	"endgoblintraders.quest_item": "任务物品",
+	"enchantment.endgoblintraders.opal_infused": "注入猫眼石"
+  }
