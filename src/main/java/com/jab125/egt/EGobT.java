@@ -1,8 +1,10 @@
 package com.jab125.egt;
 
+import com.jab125.egt.compat.voidtotem.VoidTotemEvent;
 import com.jab125.egt.config.EndGoblinTradersConfig;
 import com.jab125.egt.init.*;
 import com.jab125.limeappleboat.gobt.api.GobTEvents;
+import com.jab125.thonkutil.api.events.EventTaxi;
 import com.jab125.util.tradehelper.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -23,6 +25,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Objects;
 
+import static com.jab125.thonkutil.util.Util.isModInstalled;
+
 public class EGobT implements ModInitializer {
     public static final String MODID = "endgoblintraders";
     public static final ItemStack QUEST_ITEM = createQuestItem();
@@ -42,6 +46,10 @@ public class EGobT implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        EventTaxi.registerEventTaxiSubscriber(ModEvents.class);
+        if (isModInstalled("voidtotem")) {
+            EventTaxi.registerEventTaxiSubscriber(VoidTotemEvent.class);
+        }
         TradeManager.instance().registerTrader(ModEntities.END_GOBLIN_TRADER);
         AutoConfig.register(EndGoblinTradersConfig.class, Toml4jConfigSerializer::new);
         config = AutoConfig.getConfigHolder(EndGoblinTradersConfig.class).getConfig();

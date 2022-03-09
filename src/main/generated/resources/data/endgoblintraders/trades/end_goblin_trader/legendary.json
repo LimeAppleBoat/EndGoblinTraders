@@ -2,6 +2,7 @@
   "replace": false,
   "trades": [
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:netherite_sword",
@@ -29,6 +30,7 @@
       ]
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "endgoblintraders:durability_totem",
@@ -46,13 +48,7 @@
       "price_multiplier": 0.0,
       "max_trades": 32,
       "merchant_experience": 9,
-      "player_experience": 900,
-      "enchantments": [
-        {
-          "id": "endgoblintraders:opal_infused",
-          "level": 1
-        }
-      ]
+      "player_experience": 900
     }
   ]
 }

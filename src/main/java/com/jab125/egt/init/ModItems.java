@@ -4,6 +4,7 @@ import com.jab125.egt.item.DurabilityTotem;
 import com.jab125.egt.item.GlintItem;
 import com.jab125.egt.item.MysteryItem;
 import com.jab125.egt.item.spell.TeleportToSpawnSpell;
+import com.jab125.thonkutil.api.CapeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -12,6 +13,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
+import static com.jab125.thonkutil.util.Util.isModInstalled;
+
 public class ModItems {
     public static final Item END_GOBLIN_TRADER_SPAWN_EGG = new SpawnEggItem(ModEntities.END_GOBLIN_TRADER, 0x1a1a1a, 0xd1d1d1, new Item.Settings().group(ItemGroup.MISC));
     public static final Item MYSTERY_ITEM = new MysteryItem(new FabricItemSettings().maxCount(1).rarity(Rarity.COMMON).fireproof().maxCount(1));
@@ -19,6 +22,8 @@ public class ModItems {
     public static final Item ENCHANTED_GOLDEN_CARROT = new GlintItem((new Item.Settings()).group(null).food(ModFoods.ENCHANTED_GOLDEN_CARROT));
     public static final Item OPAL = new Item(new FabricItemSettings().group(ItemGroup.MISC));
     public static final Item DURABILITY_TOTEM = new DurabilityTotem((new Item.Settings()).maxDamage(30).group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON));
+    public static final Item DURABILITY_VOID_TOTEM = new DurabilityTotem((new Item.Settings()).maxDamage(30).group(ItemGroup.COMBAT).rarity(Rarity.UNCOMMON));
+    public static final Item END_STONE_CAPE = new CapeItem((new Item.Settings()).rarity(Rarity.RARE));
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "end_goblin_trader_spawn_egg"), END_GOBLIN_TRADER_SPAWN_EGG);
@@ -27,5 +32,8 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "enchanted_golden_carrot"), ENCHANTED_GOLDEN_CARROT);
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "opal"), OPAL);
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "durability_totem"), DURABILITY_TOTEM);
+        //if (isModInstalled("voidtotem"))
+        Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "durability_void_totem"), DURABILITY_VOID_TOTEM);
+        Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "end_stone_cape"), END_STONE_CAPE);
     }
 }

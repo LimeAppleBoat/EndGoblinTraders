@@ -5,8 +5,6 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "EnchantmentHelperMixin",
-    "EntityMixin",
-    "FabricPackMixinTemp",
     "InfinityEnchantMixin",
     "VeinGoblinTraderMixin",
     "WaterBucketMixin"

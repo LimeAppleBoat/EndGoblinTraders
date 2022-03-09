@@ -2,21 +2,7 @@
   "replace": false,
   "trades": [
     {
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:paper",
-        "count": 1,
-        "nbt": "{Enchantments:[{id:\"null\",lvl:0s}],display:{Name:\u0027{\"translate\":\"endgoblintraders.quest_item\"}\u0027}}"
-      },
-      "payment_item": {
-        "item": "minecraft:diamond",
-        "count": 17
-      },
-      "max_trades": 50,
-      "merchant_experience": 10,
-      "player_experience": 96
-    },
-    {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:potion",
@@ -32,6 +18,7 @@
       "player_experience": 96
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:potion",
@@ -47,6 +34,7 @@
       "player_experience": 26
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:potion",
@@ -62,6 +50,7 @@
       "player_experience": 10
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:potion",
@@ -76,6 +65,7 @@
       "player_experience": 13
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:azalea",
@@ -91,6 +81,7 @@
       "player_experience": 2
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:phantom_membrane",

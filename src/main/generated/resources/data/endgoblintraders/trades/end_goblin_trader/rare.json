@@ -2,6 +2,7 @@
   "replace": false,
   "trades": [
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:diamond_pickaxe",
@@ -18,6 +19,7 @@
       "player_experience": 40
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:stick",

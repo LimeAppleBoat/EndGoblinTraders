@@ -35,12 +35,11 @@ public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factor
     @Nullable
     public TradeOffer create(Entity entity, Random random) {
         this.firstBuy.setCount(price);
-        if (!(entity.world instanceof ServerWorld)) {
+        if (!(entity.world instanceof ServerWorld serverWorld)) {
             return null;
         } else {
-            ServerWorld serverWorld = (ServerWorld) entity.world;
             BlockPos blockPos = new BlockPos(0, 90, 0);
-            if (blockPos != null && serverWorld.getDimension().equals(DimensionType.THE_END)) {
+            if (serverWorld.getDimension().equals(DimensionType.THE_END)) {
                 ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", this.iconType);

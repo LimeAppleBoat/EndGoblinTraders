@@ -13,7 +13,7 @@ public class AttackRevengeTargetGoal extends net.hat.gt.entities.ai.AttackReveng
     @Override
     public void tick() {
         LivingEntity revengeTarget = this.entity.getAttacker();
-        if (revengeTarget != null && this.entity.getCurrentCustomer() == null) {
+        if (revengeTarget != null && this.entity.getCustomer() == null) {
             this.entity.getLookControl().lookAt(revengeTarget, 10.0F, (float) this.entity.getHeadRollingTimeLeft());
             if ((double) this.entity.distanceTo(revengeTarget) >= 25.0D) {
                 this.entity.getNavigation().startMovingTo(revengeTarget, 0.5D);

@@ -2,6 +2,7 @@
   "replace": false,
   "trades": [
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:diamond_pickaxe",
@@ -41,6 +42,7 @@
       ]
     },
     {
+      "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {
         "item": "minecraft:diamond_axe",
