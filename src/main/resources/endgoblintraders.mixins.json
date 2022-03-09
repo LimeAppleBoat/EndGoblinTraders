@@ -6,7 +6,6 @@
   "mixins": [
     "EnchantmentHelperMixin",
     "EntityMixin",
-    "FabricPackMixinTemp",
     "InfinityEnchantMixin",
     "VeinGoblinTraderMixin",
     "WaterBucketMixin"
