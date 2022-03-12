@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:totem_of_undying",
+    "minecraft:ender_eye",
+    "minecraft:chorus_fruit",
+    "endgoblintraders:durability_totem",
+    "endgoblintraders:durability_void_totem",
+    {
+      "id": "voidtotem:totem_of_void_undying",
+      "required": false
+    }
+  ]
+}

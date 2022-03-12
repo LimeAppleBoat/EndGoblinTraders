@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "endgoblintraders:opal_block",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "endgoblintraders:opal"
+    }
+  },
+  "result": {
+    "item": "endgoblintraders:opal_block"
+  }
+}

@@ -9,16 +9,21 @@ import com.jab125.util.tradehelper.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.hat.gt.spawning.GoblinTraderSpawner;
 import net.hat.gt.spawning.SpawnHandler;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.tag.TagKey;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,6 +33,7 @@ import java.util.Objects;
 import static com.jab125.thonkutil.util.Util.isModInstalled;
 
 public class EGobT implements ModInitializer {
+    public static final TagKey<Item> VOID_DURABILITY_TOTEM = TagKey.of(Registry.ITEM_KEY, new Identifier("endgoblintraders", "void_durability_totem"));
     public static final String MODID = "endgoblintraders";
     public static final ItemStack QUEST_ITEM = createQuestItem();
     // This logger is used to write text to the console and the log file.

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "endgoblintraders:opal_block",
     "endgoblintraders:end_opal_ore"
   ]
 }

@@ -1,6 +1,7 @@
 package com.jab125.egt.item;
 
 import com.jab125.egt.init.ModItems;
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 import static com.jab125.egt.init.ModEnchantments.OPAL_INFUSED;
+import static com.jab125.egt.util.VoidTotemQuarantine.showTooltip;
 import static com.jab125.thonkutil.util.Util.isModInstalled;
 
 public class DurabilityTotem extends Item {
@@ -49,10 +51,18 @@ public class DurabilityTotem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(new TranslatableText(OPAL_INFUSED.getTranslationKey()).formatted(Formatting.LIGHT_PURPLE));
-
-        if (stack.getItem().equals(ModItems.DURABILITY_VOID_TOTEM) && !isModInstalled("voidtotem")) {
-            tooltip.add(new TranslatableText(ModItems.DURABILITY_VOID_TOTEM.getTranslationKey() + ".disabled").formatted(Formatting.GRAY));
-        }
         super.appendTooltip(stack, world, tooltip, context);
+    }
+
+    @Override
+    protected String getOrCreateTranslationKey() {
+        if (this == ModItems.DURABILITY_TOTEM) {
+            return Items.TOTEM_OF_UNDYING.getTranslationKey();
+        } else if (this == ModItems.DURABILITY_VOID_TOTEM) {
+            if (isModInstalled("voidtotem")) {
+                return "item.voidtotem.totem_of_void_undying";
+            }
+        }
+        return super.getOrCreateTranslationKey();
     }
 }

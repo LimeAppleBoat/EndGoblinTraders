@@ -18,6 +18,25 @@
       "player_experience": 96
     },
     {
+      "required": false,
+      "type": "goblintraders:upgraded_basic",
+      "offer_item": {
+        "item": "voidtotem:totem_of_void_undying",
+        "count": 1
+      },
+      "payment_item": {
+        "item": "endgoblintraders:opal",
+        "count": 5
+      },
+      "secondary_payment_item": {
+        "item": "minecraft:totem_of_undying",
+        "count": 1
+      },
+      "max_trades": 32,
+      "merchant_experience": 10,
+      "player_experience": 96
+    },
+    {
       "required": true,
       "type": "goblintraders:upgraded_basic",
       "offer_item": {

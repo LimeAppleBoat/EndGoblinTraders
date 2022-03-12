@@ -2,19 +2,18 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "endgoblintraders:durability_void_totem"
+      "endgoblintraders:opal_block"
     ]
   },
   "criteria": {
-    "has_totem": {
+    "has_opal": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "endgoblintraders:void_durability_totem"
-          },
-          {
-            "endgoblintraders:mod_installed": "voidtotem"
+            "items": [
+              "endgoblintraders:opal"
+            ]
           }
         ]
       }
@@ -22,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "endgoblintraders:durability_void_totem"
+        "recipe": "endgoblintraders:opal_block"
       }
     }
   },
   "requirements": [
     [
-      "has_totem",
+      "has_opal",
       "has_the_recipe"
     ]
   ]

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "endgoblintraders:opal",
+  "ingredients": [
+    {
+      "item": "endgoblintraders:opal_block"
+    }
+  ],
+  "result": {
+    "item": "endgoblintraders:opal",
+    "count": 9
+  }
+}

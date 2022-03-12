@@ -1,5 +1,6 @@
 package com.jab125.egt.datagen;
 
+import com.affehund.voidtotem.VoidTotem;
 import com.jab125.egt.init.ModEnchantments;
 import com.jab125.egt.init.ModEntities;
 import com.jab125.egt.init.ModItems;
@@ -57,6 +58,17 @@ public class EndGoblinTradeProvider extends TradeProvider {
                 .setMaxTrades(50)
                 .setMerchantExperience(10)
                 .setPlayerExperience(96)
+                .build());
+
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
+                .setPaymentStack(new ItemStack(ModItems.OPAL, 5))
+                .setSecondaryPaymentStack(new ItemStack(Items.TOTEM_OF_UNDYING))
+                .setOfferStack(new ItemStack(VoidTotem.VOID_TOTEM_ITEM))
+                .setPriceMultiplier(0.05F)
+                .setMerchantExperience(10)
+                .setMaxTrades(32)
+                .setPlayerExperience(96)
+                .setRequired(false)
                 .build());
 
         this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()

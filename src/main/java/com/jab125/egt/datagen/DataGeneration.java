@@ -1,5 +1,9 @@
 package com.jab125.egt.datagen;
 
+import com.affehund.voidtotem.VoidTotem;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.jab125.egt.EGobT;
 import com.jab125.egt.init.ModBlocks;
 import com.jab125.egt.init.ModEnchantments;
 import com.jab125.egt.init.ModEntities;
@@ -22,15 +26,23 @@ import net.minecraft.data.server.BlockLootTableGenerator;
 import net.minecraft.data.server.BlockTagProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.io.IOException;
 import java.util.function.Consumer;
+
+import static net.minecraft.data.server.RecipeProvider.conditionsFromItem;
 
 public class DataGeneration implements DataGeneratorEntrypoint {
     /**
@@ -47,7 +59,7 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                 this.addDrop(ModBlocks.OPAL_ORE, (blockx) -> {
                     return BlockLootTableGenerator.oreDrops(blockx, ModItems.OPAL);
                 });
-
+                this.addDrop(ModBlocks.OPAL_BLOCK);
             }
         });
         generator.addProvider(new FabricModelProvider(generator) {
@@ -55,6 +67,8 @@ public class DataGeneration implements DataGeneratorEntrypoint {
             public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
                 blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.OPAL_ORE);
                 blockStateModelGenerator.registerParentedItemModel(ModBlocks.OPAL_ORE.asItem(), new Identifier("endgoblintraders:block/end_opal_ore"));
+                blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.OPAL_BLOCK);
+                blockStateModelGenerator.registerParentedItemModel(ModBlocks.OPAL_BLOCK.asItem(), new Identifier("endgoblintraders:block/opal_block"));
             }
 
             @Override
@@ -73,10 +87,32 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                         .input('c', Items.CHORUS_FRUIT)
                         .input('e', Items.ENDER_EYE)
                         .input('E', Items.EMERALD)
-                        .input('t', ModItems.DURABILITY_TOTEM).pattern("cec").pattern("EtE").pattern(" e ").criterion("voidduratotem", conditionsFromItem(ModItems.DURABILITY_TOTEM)).offerTo(exporter);
+                        .input('t', ModItems.DURABILITY_TOTEM).group(ModItems.DURABILITY_VOID_TOTEM.thonkutil$getId().getPath()).pattern("cec").pattern("EtE").pattern(" e ").criterion("has_totem", conditionsFromItemPredicates(ItemPredicate.Builder.create().tag(EGobT.VOID_DURABILITY_TOTEM).build(),
+                                new ItemPredicate() {
+                            @Override public JsonElement toJson() {var q = super.toJson();if (q.isJsonObject()) {JsonObject a = (JsonObject) q;a.addProperty("endgoblintraders:mod_installed", "voidtotem");return a;}return q;
+                            }}))
+                        .offerTo(exporter);
 
+                DataGeneration.this.offerReversibleCompactingRecipes(exporter, ModItems.OPAL, ModBlocks.OPAL_BLOCK);
             }
         });
+        generator.addProvider(new FabricTagProvider.BlockTagProvider(generator) {
+            @Override
+            protected void generateTags() {
+                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_BLOCK.thonkutil$getId(), "Data Gen");
+                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_ORE.thonkutil$getId(), "Data Gen");
+                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_BLOCK.thonkutil$getId(), "Data Gen");
+                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_ORE.thonkutil$getId(), "Data Gen");
+            }
+        });
+        generator.addProvider(new FabricTagProvider.ItemTagProvider(generator) {
+
+            @Override
+            protected void generateTags() {
+                this.getOrCreateTagBuilder(EGobT.VOID_DURABILITY_TOTEM).add(Items.TOTEM_OF_UNDYING, Items.ENDER_EYE, Items.CHORUS_FRUIT, ModItems.DURABILITY_TOTEM, ModItems.DURABILITY_VOID_TOTEM).addOptional(VoidTotem.VOID_TOTEM_ITEM.thonkutil$getId());
+            }
+        });
+
         //generator.addProvider(new LanguageGen(generator, "zh_cn")); not currently data generated
     }
 
@@ -112,10 +148,7 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                         addAutoConfigOption("END_GOBLIN_TRADER_CONFIG." + dimension + "_SETTINGS.SPAWN_DELAY", "Spawn Delay");
                         addAutoConfigOption("END_GOBLIN_TRADER_CONFIG." + dimension + "_SETTINGS.SPAWN_CHANCE", "Spawn Chance");
                     }
-
-                    // Items
-                    add(ModItems.DURABILITY_TOTEM, "Durability Totem");
-                    add(ModItems.DURABILITY_VOID_TOTEM, "Durability Void Totem");
+                    add(ModItems.DURABILITY_VOID_TOTEM, "Void Totem?");
                     add(ModItems.DURABILITY_VOID_TOTEM.getTranslationKey() + ".disabled", "Install Void Totem by Affehund to use this item.");
                     add(ModItems.MYSTERY_ITEM, "Mystery Item");
                     add(ModItems.MYSTERY_ITEM.getTranslationKey() + ".desc", "Might have a use one day...");
@@ -127,8 +160,9 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                     add(ModItems.END_STONE_CAPE, "End Stone Cape");
                     add("endgoblintraders.quest_item", "Quest Item"); // unused
                     // Blocks
-                    add(ModBlocks.OPAL_ORE, "Opal Ore");
+                    add(ModBlocks.OPAL_ORE, "End Opal Ore");
                     add(ModBlocks.OPAL_ORE.getTranslationKey() + ".disabled", "You can still obtain opal from trades.");
+                    add(ModBlocks.OPAL_BLOCK, "Opal Block");
                     // Entities
                     add(ModEntities.END_GOBLIN_TRADER, "End Goblin Trader");
                     // Maps
@@ -141,4 +175,10 @@ public class DataGeneration implements DataGeneratorEntrypoint {
             }
         }
     }
+
+    public void offerReversibleCompactingRecipes(Consumer<RecipeJsonProvider> exporter, ItemConvertible input, ItemConvertible compacted) {
+        ShapelessRecipeJsonBuilder.create(input, 9).group(input.asItem().thonkutil$getId().toString()).input(compacted).criterion("has_" + compacted.asItem().thonkutil$getId().getPath(), conditionsFromItem(compacted)).offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(compacted).group(compacted.asItem().thonkutil$getId().toString()).pattern("###").pattern("###").pattern("###").input('#', input).criterion("has_" + input.asItem().thonkutil$getId().getPath(), conditionsFromItem(input)).offerTo(exporter);
+    };
 }

@@ -8,6 +8,8 @@ import com.jab125.thonkutil.api.annotations.SubscribeEvent;
 import com.jab125.thonkutil.api.events.server.entity.TotemUseEvent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -19,7 +21,11 @@ public class VoidTotemEvent {
     public static void useVoidTotem(TotemUseEvent event) {
         if(isDimensionBlacklisted(event.getEntity()) || !isOutOfWorld(event.getSource(), event.getEntity())) return;
         var stack = event.findTotem(ModItems.DURABILITY_VOID_TOTEM);
-        if (stack.isEmpty()) return;
+        if (stack.isEmpty()) {
+            if (VoidTotem.CONFIG.USE_TOTEM_FROM_INVENTORY && event.getEntity() instanceof ServerPlayerEntity serverPlayerEntity)
+                stack = scanInventory(serverPlayerEntity, ModItems.DURABILITY_VOID_TOTEM);
+            if (stack.isEmpty())return;
+        }
         event.incrementStat(stack.getItem());
         if (event.getEntity().hasPlayerRider()) {
             event.getEntity().removeAllPassengers();
@@ -65,5 +71,13 @@ public class VoidTotemEvent {
         }
 
         return null;
+    }
+
+    private static ItemStack scanInventory(ServerPlayerEntity player, Item item) {
+        var q = player.getInventory().main;
+        for (ItemStack itemStack : q) {
+            if (itemStack.isOf(item)) return itemStack;
+        }
+        return ItemStack.EMPTY;
     }
 }
