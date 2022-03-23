@@ -8,13 +8,18 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.hat.gt.entities.GoblinTraderModel;
+import net.minecraft.client.color.item.ItemColorProvider;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
@@ -34,6 +39,13 @@ public class EGobTClient implements ClientModInitializer {
      */
     @Override
     public void onInitializeClient() {
+        FabricModelPredicateProviderRegistry.register(ModItems.OPAL_SWORD, new Identifier("has_potion"), (itemStack, clientWorld, livingEntity, provider) -> PotionUtil.getPotionEffects(itemStack).size() == 0 ? 0.0F : 1.0F);
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            if (PotionUtil.getPotionEffects(stack).size() == 0) return -1;
+            return tintIndex == 0 ? PotionUtil.getColor(stack) : -1;
+        }, ModItems.OPAL_SWORD);
+
         ItemTooltipCallback.EVENT.register(EGobTClient::getTooltip);
         EntityRendererRegistry.register(ModEntities.END_GOBLIN_TRADER, EndGoblinTraderRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(END_GOBLIN_MODEL_LAYER, GoblinTraderModel::getTexturedModelData);

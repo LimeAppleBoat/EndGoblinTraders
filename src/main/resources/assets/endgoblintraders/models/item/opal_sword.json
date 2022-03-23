@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "endgoblintraders:item/opal_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "has_potion": 1
+      },
+      "model": "endgoblintraders:item/opal_sword_1"
+    }
+  ]
+}

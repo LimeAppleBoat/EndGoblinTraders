@@ -65,6 +65,7 @@ public class EGobT implements ModInitializer {
         ModItems.registerItems();
         ModOres.registerOres();
         ModSounds.registerSounds();
+        ModPotions.registerPotions();
         ModEnchantments.registerEnchantments();
         final LambdaFix<Boolean> loaded = new LambdaFix<>(false);
         ServerWorldEvents.LOAD.register((minecraftServer, world) -> {

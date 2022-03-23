@@ -13,6 +13,7 @@ import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.PotionItem;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
@@ -222,6 +223,11 @@ public class EndGoblinTradeProvider extends TradeProvider {
                 .setMaxTrades(32)
                 .setMerchantExperience(9)
                 .setPlayerExperience(900)
+                .build());
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.LEGENDARY, UpgradedBasicTrade.Builder.create()
+                .setPaymentStack(new ItemStack(ModItems.OPAL, 64))
+                .setSecondaryPaymentStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRONG_POISON))
+                .setOfferStack(PotionUtil.setPotion(new ItemStack(ModItems.OPAL_SWORD), com.jab125.egt.init.ModPotions.EXTREMELY_POWERFUL_POISON))
                 .build());
     }
 }

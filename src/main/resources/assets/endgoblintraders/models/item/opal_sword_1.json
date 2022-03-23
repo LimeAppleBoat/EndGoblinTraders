@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "endgoblintraders:item/opal_sword_overlay",
+    "layer1": "endgoblintraders:item/opal_sword"
+  }
+}

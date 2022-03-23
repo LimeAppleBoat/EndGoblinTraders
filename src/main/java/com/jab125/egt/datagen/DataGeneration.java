@@ -160,6 +160,7 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                     add(ModItems.OPAL, "Opal");
                     add(ModItems.END_GOBLIN_TRADER_SPAWN_EGG, "End Goblin Trader Spawn Egg");
                     add(ModItems.END_STONE_CAPE, "End Stone Cape");
+                    add(ModItems.OPAL_SWORD, "Opal Sword");
                     add("endgoblintraders.quest_item", "Quest Item"); // unused
                     // Blocks
                     add(ModBlocks.OPAL_ORE, "End Opal Ore");
