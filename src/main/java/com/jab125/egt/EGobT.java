@@ -55,6 +55,7 @@ public class EGobT implements ModInitializer {
         EventTaxi.registerEventTaxiSubscriber(ModEvents.class);
         if (isModInstalled("voidtotem")) {
             EventTaxi.registerEventTaxiSubscriber(VoidTotemEvent.class);
+            VoidTotemEvent.voidTotemEvent();
         }
         TradeManager.instance().registerTrader(ModEntities.END_GOBLIN_TRADER);
         AutoConfig.register(EndGoblinTradersConfig.class, Toml4jConfigSerializer::new);

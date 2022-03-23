@@ -1,6 +1,7 @@
 package com.jab125.egt.datagen;
 
 import com.affehund.voidtotem.VoidTotem;
+import com.affehund.voidtotem.core.ModConstants;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jab125.egt.EGobT;
@@ -110,6 +111,7 @@ public class DataGeneration implements DataGeneratorEntrypoint {
             @Override
             protected void generateTags() {
                 this.getOrCreateTagBuilder(EGobT.VOID_DURABILITY_TOTEM).add(Items.TOTEM_OF_UNDYING, Items.ENDER_EYE, Items.CHORUS_FRUIT, ModItems.DURABILITY_TOTEM, ModItems.DURABILITY_VOID_TOTEM).addOptional(VoidTotem.VOID_TOTEM_ITEM.thonkutil$getId());
+                this.getOrCreateTagBuilder(ModConstants.ADDITIONAL_TOTEMS_TAG).add(ModItems.DURABILITY_TOTEM);
             }
         });
 

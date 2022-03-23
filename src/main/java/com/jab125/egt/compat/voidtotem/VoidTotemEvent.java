@@ -1,18 +1,20 @@
 package com.jab125.egt.compat.voidtotem;
 
 import com.affehund.voidtotem.VoidTotem;
-import com.affehund.voidtotem.core.IPlayerEntityMixinAccessor;
+import com.affehund.voidtotem.api.ModEvents;
+import com.affehund.voidtotem.core.LivingEntityAccessor;
 import com.affehund.voidtotem.core.ModUtils;
 import com.jab125.egt.init.ModItems;
 import com.jab125.thonkutil.api.annotations.SubscribeEvent;
 import com.jab125.thonkutil.api.events.server.entity.TotemUseEvent;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 
 import static com.affehund.voidtotem.core.ModUtils.*;
 
@@ -26,13 +28,14 @@ public class VoidTotemEvent {
                 stack = scanInventory(serverPlayerEntity, ModItems.DURABILITY_VOID_TOTEM);
             if (stack.isEmpty())return;
         }
+
         event.incrementStat(stack.getItem());
         if (event.getEntity().hasPlayerRider()) {
             event.getEntity().removeAllPassengers();
         }
 
         event.getEntity().stopRiding();
-        event.getEntity().addScoreboardTag("voidtotem_living_falling");
+        ((LivingEntityAccessor) event.getEntity()).setFallDamageImmune(true);
         event.saveEntity();
         teleportToSavePosition(event.getEntity());
         event.setTotemActivateItem(stack);
@@ -45,33 +48,6 @@ public class VoidTotemEvent {
         if (stack.getDamage() >= stack.getMaxDamage()) stack.decrement(1);
     }
 
-    // supports non player characters
-    public static void teleportToSavePosition(LivingEntity entity) {
-        long lastBlockPos = entity.getBlockPos().asLong();
-        BlockPos teleportPos = BlockPos.fromLong(lastBlockPos);
-        BlockPos positionInRadius = positionInRadius(entity, teleportPos);
-        if (positionInRadius == null) {
-            entity.teleport((double)teleportPos.getX(), (double)(entity.world.getTopY() + VoidTotem.CONFIG.TELEPORT_HEIGHT_OFFSET), (double)teleportPos.getZ());
-            if (entity instanceof ServerPlayerEntity player)
-            player.networkHandler.floatingTicks = 0;
-        }
-    }
-
-    // supports non player characters
-    public static BlockPos positionInRadius(LivingEntity entity, BlockPos teleportPos) {
-        for(int i = 0; i < 16; ++i) {
-            int maxBuildHeight = entity.world.getTopY();
-            double x = (double)teleportPos.getX() + (entity.getRandom().nextDouble() - 0.5D) * 4.0D;
-            double y = MathHelper.clamp((double)(entity.getRandom().nextInt() * maxBuildHeight), 0.0D, (double)(maxBuildHeight - 1));
-            double z = (double)teleportPos.getZ() + (entity.getRandom().nextDouble() - 0.5D) * 4.0D;
-            BlockPos pos = new BlockPos(x, y, z);
-            if (entity.teleport(x, y, z, true)) {
-                return pos;
-            }
-        }
-
-        return null;
-    }
 
     private static ItemStack scanInventory(ServerPlayerEntity player, Item item) {
         var q = player.getInventory().main;
@@ -79,5 +55,47 @@ public class VoidTotemEvent {
             if (itemStack.isOf(item)) return itemStack;
         }
         return ItemStack.EMPTY;
+    }
+
+    private static ActionResult voidTotemCancel(ItemStack itemStack, LivingEntity livingEntity, DamageSource source) {
+        if (itemStack.isOf(ModItems.DURABILITY_VOID_TOTEM)) return ActionResult.CONSUME; // already have a custom method for that
+        if (itemStack.isOf(ModItems.DURABILITY_TOTEM)) if (useTotem(itemStack, livingEntity, source)) return ActionResult.CONSUME_PARTIAL;
+        return ActionResult.PASS;
+    }
+
+    public static void voidTotemEvent() {
+        ModEvents.VOID_TOTEM_EVENT.register(VoidTotemEvent::voidTotemCancel);
+    }
+
+    private static boolean useTotem(ItemStack itemStack, LivingEntity livingEntity, DamageSource source) {
+        if(isDimensionBlacklisted(livingEntity) || !isOutOfWorld(source, livingEntity)) return false;
+        var stack = itemStack;
+        if (stack.isEmpty()) {
+            if (VoidTotem.CONFIG.USE_TOTEM_FROM_INVENTORY && livingEntity instanceof ServerPlayerEntity serverPlayerEntity)
+                stack = scanInventory(serverPlayerEntity, ModItems.DURABILITY_TOTEM);
+            if (stack.isEmpty())return false;
+        }
+
+        if (!stack.equals(ItemStack.EMPTY)) {
+            if (livingEntity instanceof ServerPlayerEntity player) {
+                player.incrementStat(Stats.USED.getOrCreateStat(itemStack.getItem()));
+            }
+
+        }
+        if (livingEntity.hasPlayerRider()) {
+            livingEntity.removeAllPassengers();
+        }
+
+        livingEntity.stopRiding();
+        ((LivingEntityAccessor) livingEntity).setFallDamageImmune(true);
+        teleportToSavePosition(livingEntity);
+        ModUtils.playActivateAnimation(stack, livingEntity);
+        stack.damage(livingEntity.world.getLevelProperties().isHardcore() ? 5 : 10, livingEntity, (e) ->{
+            for (var slot : EquipmentSlot.values()) {
+                e.sendEquipmentBreakStatus(slot);
+            }
+        });
+        if (stack.getDamage() >= stack.getMaxDamage()) stack.decrement(1);
+        return true;
     }
 }

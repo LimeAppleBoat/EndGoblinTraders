@@ -32,7 +32,7 @@ public class DurabilityTotem extends Item {
 
     @Override
     public Rarity getRarity(ItemStack stack) {
-        if (stack.getItem() instanceof DurabilityTotem) {
+        if (!(stack.getItem() instanceof DurabilityTotem)) {
             return super.getRarity(stack);
         } else {
             return switch (this.rarity) {

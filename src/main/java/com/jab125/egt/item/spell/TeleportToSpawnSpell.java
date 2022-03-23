@@ -19,7 +19,6 @@ public class TeleportToSpawnSpell extends Spell {
         super.inventoryTick(stack, world, entity, slot, selected);
         BlockPos pos = entity.getBlockPos();
         BlockState state = world.getBlockState(pos);
-        PlayerEntity playerEntity = (PlayerEntity) entity;
         if (world instanceof ServerWorld && !entity.hasVehicle() && !entity.hasPassengers() && entity.canUsePortals()) {
             RegistryKey<World> registryKey = World.OVERWORLD;
             ServerWorld serverWorld = ((ServerWorld) world).getServer().getWorld(registryKey);
