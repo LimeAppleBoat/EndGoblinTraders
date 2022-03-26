@@ -40,6 +40,35 @@
           "level": 2
         }
       ]
+    },
+    {
+      "required": true,
+      "type": "goblintraders:container",
+      "offer_item": {
+        "item": "minecraft:chest",
+        "count": 1,
+        "nbt": "{display:{Name:\u0027{\"translate\":\"endgoblintraders.opal_sword_chest\"}\u0027}}"
+      },
+      "payment_item": {
+        "item": "endgoblintraders:opal",
+        "count": 64
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 1,
+      "experience": 100,
+      "container_items": [
+        {
+          "slot": 0,
+          "item": "endgoblintraders:opal_sword",
+          "count": 1,
+          "nbt": "{Damage:0}"
+        },
+        {
+          "slot": 1,
+          "item": "endgoblintraders:opal_sword_tip",
+          "count": 1
+        }
+      ]
     }
   ]
 }

@@ -49,27 +49,6 @@
       "max_trades": 32,
       "merchant_experience": 9,
       "player_experience": 900
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "endgoblintraders:opal_sword",
-        "count": 1,
-        "nbt": "{Damage:0,Potion:\"endgoblintraders:extremely_powerful_poison\"}"
-      },
-      "payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 64
-      },
-      "secondary_payment_item": {
-        "item": "minecraft:potion",
-        "count": 1,
-        "nbt": "{Potion:\"minecraft:strong_poison\"}"
-      },
-      "price_multiplier": 0.0,
-      "merchant_experience": 10,
-      "player_experience": 10
     }
   ]
 }

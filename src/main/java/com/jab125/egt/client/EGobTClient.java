@@ -1,9 +1,10 @@
 package com.jab125.egt.client;
 
-import com.affehund.voidtotem.core.ModConstants;
 import com.jab125.egt.entities.EndGoblinTraderRenderer;
 import com.jab125.egt.init.ModEntities;
 import com.jab125.egt.init.ModItems;
+import com.jab125.egt.item.OpalSwordTipTooltipData;
+import com.jab125.egt.item.client.OpalSwordTipTooltipComponent;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,14 +12,14 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.hat.gt.entities.GoblinTraderModel;
-import net.minecraft.client.color.item.ItemColorProvider;
+import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -46,6 +47,13 @@ public class EGobTClient implements ClientModInitializer {
             return tintIndex == 0 ? PotionUtil.getColor(stack) : -1;
         }, ModItems.OPAL_SWORD);
 
+        TooltipComponentCallback.EVENT.register((data -> {
+            if (data instanceof OpalSwordTipTooltipData) {
+                System.out.println("O_O");
+                return new OpalSwordTipTooltipComponent();
+            }
+            return null;
+        }));
         ItemTooltipCallback.EVENT.register(EGobTClient::getTooltip);
         EntityRendererRegistry.register(ModEntities.END_GOBLIN_TRADER, EndGoblinTraderRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(END_GOBLIN_MODEL_LAYER, GoblinTraderModel::getTexturedModelData);

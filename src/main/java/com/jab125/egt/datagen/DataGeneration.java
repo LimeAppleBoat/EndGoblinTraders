@@ -174,6 +174,9 @@ public class DataGeneration implements DataGeneratorEntrypoint {
                     add("filled_map.stronghold", "Stronghold Explorer Map");
                     //
                     add(ModEnchantments.OPAL_INFUSED, "Opal Infused");
+
+                    add("endgoblintraders.opal_sword_chest", "Opal Sword Chest");
+                    //add("endgoblintraders.opal_sword_tip", "You can combine an opal sword and a potion in a crafting table.");
                 }
             }
         }

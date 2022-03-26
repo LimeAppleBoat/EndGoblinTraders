@@ -6,7 +6,9 @@ import com.jab125.egt.init.ModEntities;
 import com.jab125.egt.init.ModItems;
 import com.jab125.util.datagen.TradeProvider;
 import com.jab125.util.tradehelper.TradeRarities;
+import com.jab125.util.tradehelper.type.ContainerTrade;
 import com.jab125.util.tradehelper.type.UpgradedBasicTrade;
+import com.jab125.util.tradehelper.type.UpgradedBundleTrade;
 import net.hat.gt.init.ModPotions;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -157,6 +159,18 @@ public class EndGoblinTradeProvider extends TradeProvider {
                 .setPlayerExperience(40)
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.KNOCKBACK, 2))
                 .build());
+
+        var tip = new ItemStack(ModItems.OPAL_SWORD_TIP);
+        var chest = new ItemStack(Items.CHEST);
+        chest.setCustomName(new TranslatableText("endgoblintraders.opal_sword_chest"));
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.RARE, ContainerTrade.Builder.create()
+                .setPaymentStack(new ItemStack(ModItems.OPAL, 64))
+                .setOfferStack(chest)
+                .setContainerItem(new ItemStack(ModItems.OPAL_SWORD), 0)
+                .setContainerItem(tip, 1)
+                .setMaxTrades(1)
+                .setMerchantExperience(100)
+                .build());
     }
 
     public void registerEpicEndGoblinTrades() {
@@ -198,6 +212,16 @@ public class EndGoblinTradeProvider extends TradeProvider {
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.SHARPNESS, 5))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.MENDING, 1))
                 .build());
+
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.EPIC, UpgradedBasicTrade.Builder.create()
+                .setPaymentStack(new ItemStack(Items.TOTEM_OF_UNDYING))
+                .setSecondaryPaymentStack(new ItemStack(ModItems.OPAL, 15))
+                .setOfferStack(new ItemStack(ModItems.DURABILITY_TOTEM))
+                .setPriceMultiplier(0F)
+                .setMaxTrades(32)
+                .setMerchantExperience(9)
+                .setPlayerExperience(900)
+                .build());
     }
 
     public void registerLegendaryEndGoblinTrades() {
@@ -213,21 +237,6 @@ public class EndGoblinTradeProvider extends TradeProvider {
                 .setMerchantExperience(9)
                 .setPlayerExperience(900)
                 .addEnchantment(new EnchantmentLevelEntry(ModEnchantments.OPAL_INFUSED, 1))
-                .build());
-
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.LEGENDARY, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(Items.TOTEM_OF_UNDYING))
-                .setSecondaryPaymentStack(new ItemStack(ModItems.OPAL, 15))
-                .setOfferStack(new ItemStack(ModItems.DURABILITY_TOTEM))
-                .setPriceMultiplier(0F)
-                .setMaxTrades(32)
-                .setMerchantExperience(9)
-                .setPlayerExperience(900)
-                .build());
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.LEGENDARY, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(ModItems.OPAL, 64))
-                .setSecondaryPaymentStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRONG_POISON))
-                .setOfferStack(PotionUtil.setPotion(new ItemStack(ModItems.OPAL_SWORD), com.jab125.egt.init.ModPotions.EXTREMELY_POWERFUL_POISON))
                 .build());
     }
 }
