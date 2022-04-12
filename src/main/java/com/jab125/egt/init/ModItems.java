@@ -11,6 +11,7 @@ import net.minecraft.util.registry.Registry;
 
 import static com.jab125.thonkutil.util.Util.isModInstalled;
 
+
 public class ModItems {
     public static final Item END_GOBLIN_TRADER_SPAWN_EGG = new SpawnEggItem(ModEntities.END_GOBLIN_TRADER, 0x1a1a1a, 0xd1d1d1, new Item.Settings().group(ItemGroup.MISC));
     public static final Item MYSTERY_ITEM = new MysteryItem(new FabricItemSettings().maxCount(1).rarity(Rarity.COMMON).fireproof().maxCount(1));
@@ -35,5 +36,6 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "end_stone_cape"), END_STONE_CAPE);
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "opal_sword"), OPAL_SWORD);
         Registry.register(Registry.ITEM, new Identifier("endgoblintraders", "opal_sword_tip"), OPAL_SWORD_TIP);
+        System.out.println("[End Goblin Traders] Registered Items");
     }
 }

@@ -3,10 +3,12 @@ package com.jab125.egt.item;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.item.TooltipData;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,6 +28,11 @@ public class OpalSwordTipItem extends Item {
         @Override
         public String getTranslationKey() {
                 return Items.PAPER.getTranslationKey();
+        }
+
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+
         }
 
         @Override
