@@ -1,25 +1,19 @@
 package com.jab125.egt.recipes;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.jab125.egt.EGobT;
 import com.jab125.egt.init.ModItems;
-import com.jab125.egt.item.OpalSwordItem;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Map;
 
 public class OpalSwordRecipe extends SpecialCraftingRecipe {
     public OpalSwordRecipe(Identifier id) {
@@ -27,7 +21,6 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
     }
 
     public boolean matches(CraftingInventory craftingInventory, World world) {
-        System.out.println("Matching");
         List<ItemStack> list = Lists.newArrayList();
 
         // for every slot
@@ -47,12 +40,10 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
             }
         }
 
-        System.out.println("Matching completed");
         return list.size() == 2;
     }
 
     public ItemStack craft(CraftingInventory craftingInventory) {
-        System.out.println("Craft");
         ItemStack sword = ItemStack.EMPTY;
         ItemStack potion = ItemStack.EMPTY;
         for (var i = 0; i < craftingInventory.size(); ++i) {
@@ -64,7 +55,6 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
         stack.setDamage(sword.getDamage());
         EnchantmentHelper.get(sword).forEach(stack::addEnchantment);
         PotionUtil.setPotion(stack, PotionUtil.getPotion(potion));
-        System.out.println("Craft success");
         return stack;
         //return ItemStack.EMPTY;
     }
