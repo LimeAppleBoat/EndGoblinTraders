@@ -27,7 +27,6 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
     }
 
     public boolean matches(CraftingInventory craftingInventory, World world) {
-        System.out.println("Matching");
         List<ItemStack> list = Lists.newArrayList();
 
         // for every slot
@@ -46,13 +45,10 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
                 }
             }
         }
-
-        System.out.println("Matching completed");
         return list.size() == 2;
     }
 
     public ItemStack craft(CraftingInventory craftingInventory) {
-        System.out.println("Craft");
         ItemStack sword = ItemStack.EMPTY;
         ItemStack potion = ItemStack.EMPTY;
         for (var i = 0; i < craftingInventory.size(); ++i) {
@@ -64,7 +60,6 @@ public class OpalSwordRecipe extends SpecialCraftingRecipe {
         stack.setDamage(sword.getDamage());
         EnchantmentHelper.get(sword).forEach(stack::addEnchantment);
         PotionUtil.setPotion(stack, PotionUtil.getPotion(potion));
-        System.out.println("Craft success");
         return stack;
         //return ItemStack.EMPTY;
     }

@@ -22,7 +22,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
@@ -63,10 +62,10 @@ public class EGobTClient implements ClientModInitializer {
         Item item = stack.getItem();
         if (item.equals(ModItems.DURABILITY_VOID_TOTEM)) {
             if (isModInstalled("voidtotem") && showTooltip()) {
-                tooltip.add(new TranslatableText("tooltip.voidtotem.totem_of_void_undying").formatted(Formatting.GREEN));
+                tooltip.add(Text.translatable("tooltip.voidtotem.totem_of_void_undying").formatted(Formatting.GREEN));
             }
             if (!isModInstalled("voidtotem")) {
-                tooltip.add(new TranslatableText(ModItems.DURABILITY_VOID_TOTEM.getTranslationKey() + ".disabled").formatted(Formatting.GRAY));
+                tooltip.add(Text.translatable(ModItems.DURABILITY_VOID_TOTEM.getTranslationKey() + ".disabled").formatted(Formatting.GRAY));
             }
         }
     }

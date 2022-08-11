@@ -7,7 +7,7 @@
       "offer_item": {
         "item": "minecraft:diamond_pickaxe",
         "count": 1,
-        "nbt": "{Damage:0,display:{Name:\u0027{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_pickaxe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}\u0027}}"
+        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_pickaxe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
       },
       "payment_item": {
         "item": "minecraft:diamond_pickaxe",
@@ -47,7 +47,7 @@
       "offer_item": {
         "item": "minecraft:diamond_axe",
         "count": 1,
-        "nbt": "{Damage:0,display:{Name:\u0027{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}\u0027}}"
+        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
       },
       "payment_item": {
         "item": "minecraft:diamond_axe",
@@ -80,6 +80,63 @@
           "level": 1
         }
       ]
+    },
+    {
+      "required": true,
+      "type": "goblintraders:upgraded_basic",
+      "offer_item": {
+        "item": "minecraft:diamond_axe",
+        "count": 1,
+        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
+      },
+      "payment_item": {
+        "item": "minecraft:diamond_hoe",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "secondary_payment_item": {
+        "item": "minecraft:netherite_ingot",
+        "count": 24
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 32,
+      "merchant_experience": 2,
+      "player_experience": 20,
+      "enchantments": [
+        {
+          "id": "minecraft:efficiency",
+          "level": 7
+        },
+        {
+          "id": "minecraft:unbreaking",
+          "level": 7
+        },
+        {
+          "id": "minecraft:mending",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "required": true,
+      "type": "goblintraders:upgraded_basic",
+      "offer_item": {
+        "item": "endgoblintraders:durability_totem",
+        "count": 1,
+        "nbt": "{Damage:0}"
+      },
+      "payment_item": {
+        "item": "minecraft:totem_of_undying",
+        "count": 1
+      },
+      "secondary_payment_item": {
+        "item": "endgoblintraders:opal",
+        "count": 15
+      },
+      "price_multiplier": 0.0,
+      "max_trades": 32,
+      "merchant_experience": 9,
+      "player_experience": 900
     }
   ]
 }

@@ -24,7 +24,7 @@
       "offer_item": {
         "item": "minecraft:stick",
         "count": 1,
-        "nbt": "{display:{Name:\u0027{\"extra\":[{\"text\":\" \"},{\"translate\":\"item.minecraft.stick\"}],\"translate\":\"enchantment.minecraft.knockback\"}\u0027}}"
+        "nbt": "{display:{Name:'{\"extra\":[{\"text\":\" \"},{\"translate\":\"item.minecraft.stick\"}],\"translate\":\"enchantment.minecraft.knockback\"}'}}"
       },
       "payment_item": {
         "item": "minecraft:netherite_ingot",
@@ -47,7 +47,7 @@
       "offer_item": {
         "item": "minecraft:chest",
         "count": 1,
-        "nbt": "{display:{Name:\u0027{\"translate\":\"endgoblintraders.opal_sword_chest\"}\u0027}}"
+        "nbt": "{display:{Name:'{\"translate\":\"endgoblintraders.opal_sword_chest\"}'}}"
       },
       "payment_item": {
         "item": "endgoblintraders:opal",

@@ -28,27 +28,6 @@
           "level": 1
         }
       ]
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "endgoblintraders:durability_totem",
-        "count": 1,
-        "nbt": "{Damage:0}"
-      },
-      "payment_item": {
-        "item": "minecraft:totem_of_undying",
-        "count": 1
-      },
-      "secondary_payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 15
-      },
-      "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 9,
-      "player_experience": 900
     }
   ]
 }

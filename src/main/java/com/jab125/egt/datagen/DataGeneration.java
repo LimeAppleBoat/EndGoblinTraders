@@ -1,7 +1,7 @@
 package com.jab125.egt.datagen;
 
+import com.affehund.voidtotem.ModConstants;
 import com.affehund.voidtotem.VoidTotem;
-import com.affehund.voidtotem.core.ModConstants;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.jab125.egt.EGobT;
@@ -16,9 +16,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -36,7 +33,6 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -100,17 +96,17 @@ public class DataGeneration implements DataGeneratorEntrypoint {
         generator.addProvider(new FabricTagProvider.BlockTagProvider(generator) {
             @Override
             protected void generateTags() {
-                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_BLOCK.thonkutil$getId(), "Data Gen");
-                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_ORE.thonkutil$getId(), "Data Gen");
-                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_BLOCK.thonkutil$getId(), "Data Gen");
-                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_ORE.thonkutil$getId(), "Data Gen");
+                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_BLOCK.thonkutil$getId());
+                this.getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(ModBlocks.OPAL_ORE.thonkutil$getId());
+                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_BLOCK.thonkutil$getId());
+                this.getTagBuilder(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.OPAL_ORE.thonkutil$getId());
             }
         });
         generator.addProvider(new FabricTagProvider.ItemTagProvider(generator) {
 
             @Override
             protected void generateTags() {
-                this.getOrCreateTagBuilder(EGobT.VOID_DURABILITY_TOTEM).add(Items.TOTEM_OF_UNDYING, Items.ENDER_EYE, Items.CHORUS_FRUIT, ModItems.DURABILITY_TOTEM, ModItems.DURABILITY_VOID_TOTEM).addOptional(VoidTotem.VOID_TOTEM_ITEM.thonkutil$getId());
+                this.getOrCreateTagBuilder(EGobT.VOID_DURABILITY_TOTEM).add(Items.TOTEM_OF_UNDYING, Items.ENDER_EYE, Items.CHORUS_FRUIT, ModItems.DURABILITY_TOTEM, ModItems.DURABILITY_VOID_TOTEM).addOptional(VoidTotem.PLATFORM.getVoidTotemItem().thonkutil$getId());
                 this.getOrCreateTagBuilder(ModConstants.ADDITIONAL_TOTEMS_TAG).add(ModItems.DURABILITY_TOTEM);
             }
         });
@@ -122,6 +118,11 @@ public class DataGeneration implements DataGeneratorEntrypoint {
 
         public LanguageGen(FabricDataGenerator fabricDataGenerator, String locale) {
             super(fabricDataGenerator, locale);
+        }
+
+        @Override
+        public String getName() {
+            return "Translations: " + "endgoblintraders";
         }
 
         @Override

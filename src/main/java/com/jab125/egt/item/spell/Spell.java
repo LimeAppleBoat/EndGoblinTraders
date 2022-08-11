@@ -3,9 +3,7 @@ package com.jab125.egt.item.spell;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -19,8 +17,8 @@ public class Spell extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(new TranslatableText(this.getTranslationKey() + ".desc").formatted(Formatting.GRAY));
-        tooltip.add(new LiteralText("YOU NEED [Hyperlink Blocked]").formatted(Formatting.OBFUSCATED).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable(this.getTranslationKey() + ".desc").formatted(Formatting.GRAY));
+        tooltip.add(Text.literal("--> CLICK HERE FOR FREE ROBUX <--").formatted(Formatting.OBFUSCATED).formatted(Formatting.GRAY));
         super.appendTooltip(stack, world, tooltip, context);
     }
 }

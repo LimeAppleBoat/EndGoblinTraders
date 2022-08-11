@@ -23,13 +23,14 @@ import net.minecraft.recipe.*;
 import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tag.TagKey;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.DimensionTypes;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +55,7 @@ public class EGobT implements ModInitializer {
 
     private static ItemStack createQuestItem() {
         ItemStack questItem = new ItemStack(Items.PAPER);
-        questItem.setCustomName(new TranslatableText("endgoblintraders.quest_item"));
+        questItem.setCustomName(Text.translatable("endgoblintraders.quest_item"));
         questItem.addEnchantment(null, 0);
         return questItem;
     }
@@ -82,9 +83,9 @@ public class EGobT implements ModInitializer {
         final LambdaFix<Boolean> loaded = new LambdaFix<>(false);
         ServerWorldEvents.LOAD.register((minecraftServer, world) -> {
             if (loaded.get()) return;
-            SpawnHandler.addToSpawners(DimensionType.THE_NETHER_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderHell", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
-            SpawnHandler.addToSpawners(DimensionType.THE_END_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderSky", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
-            SpawnHandler.addToSpawners(DimensionType.OVERWORLD_REGISTRY_KEY.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderEarth", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+            SpawnHandler.addToSpawners(DimensionTypes.THE_NETHER.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderHell", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+            SpawnHandler.addToSpawners(DimensionTypes.THE_END.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderSky", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
+            SpawnHandler.addToSpawners(DimensionTypes.OVERWORLD.getValue(), new GoblinTraderSpawner(minecraftServer, "EndGoblinTraderEarth", ModEntities.END_GOBLIN_TRADER, Objects.requireNonNull(ModEntities.END_GOBLIN_TRADER.create(world))));
             SpawnHandler.getSpawners().forEach((identifier, goblinTraderSpawner) -> {
                 //System.out.println(identifier.toString() + ": " + goblinTraderSpawner);
             });
@@ -92,7 +93,7 @@ public class EGobT implements ModInitializer {
         });
         GobTEvents.ON_ATTEMPT_SPAWN.register(((entityType, serverWorld, blockPos) -> {
             ActionResult result = ActionResult.PASS;
-            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.OVERWORLD)) {
+            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimensionKey().equals(DimensionTypes.OVERWORLD)) {
                 /* End Goblin Traders can spawn up to y=255, this is just a test to make sure they don't spawn in broad daylight */
                 if (!(serverWorld.getLightLevel(blockPos) < 5 && !serverWorld.isSkyVisible(blockPos)))
                     result = ActionResult.FAIL;
@@ -101,13 +102,13 @@ public class EGobT implements ModInitializer {
 			  Prevents End Goblin Traders from spawning the central end island
 			 */
             BlockPos pos = new BlockPos(blockPos.getX(), 90, blockPos.getZ());
-            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
+            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimensionKey().equals(DimensionTypes.THE_END)) {
                 if (pos.isWithinDistance(new BlockPos(0, 90, 0), 750)) result = ActionResult.FAIL;
             }
 			/*
 			  Prevents End Goblin Traders from spawning on Bedrock
 			 */
-            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimension().equals(DimensionType.THE_END)) {
+            if (entityType.equals(ModEntities.END_GOBLIN_TRADER) && serverWorld.getDimensionKey().equals(DimensionTypes.THE_END)) {
                 if (serverWorld.getBlockState(blockPos.down()).getBlock().equals(Blocks.BEDROCK) && (entityType.equals(ModEntities.END_GOBLIN_TRADER)))
                     result = ActionResult.FAIL;
             }

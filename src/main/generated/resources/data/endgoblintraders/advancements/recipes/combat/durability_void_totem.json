@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "endgoblintraders:durability_void_totem"
-    ]
-  },
   "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "endgoblintraders:durability_void_totem"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
     "has_totem": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -17,13 +17,8 @@
             "endgoblintraders:mod_installed": "voidtotem"
           }
         ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "endgoblintraders:durability_void_totem"
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
@@ -31,5 +26,10 @@
       "has_totem",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "endgoblintraders:durability_void_totem"
+    ]
+  }
 }

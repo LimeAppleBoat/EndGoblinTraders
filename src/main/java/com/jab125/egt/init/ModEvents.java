@@ -8,6 +8,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Hand;
 
+import static com.jab125.egt.item.DurabilityTotem.cheap;
 import static com.jab125.egt.util.Util.damageItem;
 
 public class ModEvents {
@@ -25,7 +26,7 @@ public class ModEvents {
         event.getEntity().addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 900, 1));
         event.getEntity().addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
         event.getEntity().addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
-        totem.damage(event.getEntity().world.getLevelProperties().isHardcore() ? 5 : 10, event.getEntity(), (e) ->{
+        totem.damage(event.getEntity().world.getLevelProperties().isHardcore() ? cheap() ? 2 : 5 : cheap() ? 5 : 10, event.getEntity(), (e) ->{
             for (var slot : EquipmentSlot.values()) {
                 e.sendEquipmentBreakStatus(slot);
             }

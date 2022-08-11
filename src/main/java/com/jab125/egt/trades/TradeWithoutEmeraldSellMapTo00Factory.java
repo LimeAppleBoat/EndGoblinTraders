@@ -8,14 +8,14 @@ import net.minecraft.item.Items;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.item.map.MapState;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.DimensionTypes;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factory {
     private final ItemStack firstBuy;
@@ -39,11 +39,11 @@ public class TradeWithoutEmeraldSellMapTo00Factory implements TradeOffers.Factor
             return null;
         } else {
             BlockPos blockPos = new BlockPos(0, 90, 0);
-            if (serverWorld.getDimension().equals(DimensionType.THE_END)) {
+            if (serverWorld.getDimensionKey().equals(DimensionTypes.THE_END)) {
                 ItemStack itemStack = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
                 FilledMapItem.fillExplorationMap(serverWorld, itemStack);
                 MapState.addDecorationsNbt(itemStack, blockPos, "+", this.iconType);
-                itemStack.setCustomName(new TranslatableText("filled_map." + "end_fountain"));
+                itemStack.setCustomName(Text.translatable("filled_map." + "end_fountain"));
                 return new TradeOffer(this.firstBuy, new ItemStack(Items.COMPASS), itemStack, this.maxUses, this.experience, 0.2F);
             } else {
                 return null;

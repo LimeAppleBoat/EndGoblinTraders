@@ -1,8 +1,9 @@
 package com.jab125.egt.compat.voidtotem;
 
 import com.affehund.voidtotem.VoidTotem;
-import com.affehund.voidtotem.api.ModEvents;
-import com.affehund.voidtotem.core.LivingEntityAccessor;
+import com.affehund.voidtotem.VoidTotemFabric;
+import com.affehund.voidtotem.api.VoidTotemEventCallback;
+import com.affehund.voidtotem.core.ILivingEntityMixin;
 import com.affehund.voidtotem.core.ModUtils;
 import com.jab125.egt.init.ModItems;
 import com.jab125.thonkutil.api.annotations.SubscribeEvent;
@@ -16,7 +17,10 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
 
+import java.time.LocalDate;
+
 import static com.affehund.voidtotem.core.ModUtils.*;
+import static com.jab125.egt.item.DurabilityTotem.cheap;
 
 public class VoidTotemEvent {
     @SubscribeEvent(priority = SubscribeEvent.Priority.HIGH)
@@ -24,7 +28,7 @@ public class VoidTotemEvent {
         if(isDimensionBlacklisted(event.getEntity()) || !isOutOfWorld(event.getSource(), event.getEntity())) return;
         var stack = event.findTotem(ModItems.DURABILITY_VOID_TOTEM);
         if (stack.isEmpty()) {
-            if (VoidTotem.CONFIG.USE_TOTEM_FROM_INVENTORY && event.getEntity() instanceof ServerPlayerEntity serverPlayerEntity)
+            if (VoidTotemFabric.CONFIG.USE_TOTEM_FROM_INVENTORY && event.getEntity() instanceof ServerPlayerEntity serverPlayerEntity)
                 stack = scanInventory(serverPlayerEntity, ModItems.DURABILITY_VOID_TOTEM);
             if (stack.isEmpty())return;
         }
@@ -35,12 +39,12 @@ public class VoidTotemEvent {
         }
 
         event.getEntity().stopRiding();
-        ((LivingEntityAccessor) event.getEntity()).setFallDamageImmune(true);
+        ((ILivingEntityMixin) event.getEntity()).setFallDamageImmune(true);
         event.saveEntity();
         teleportToSavePosition(event.getEntity());
         event.setTotemActivateItem(stack);
         event.playActivateAnimation();
-        stack.damage(event.getEntity().world.getLevelProperties().isHardcore() ? 5 : 10, event.getEntity(), (e) ->{
+        stack.damage(event.getEntity().world.getLevelProperties().isHardcore() ? cheap() ? 2 : 5 : cheap() ? 5 : 10, event.getEntity(), (e) ->{
             for (var slot : EquipmentSlot.values()) {
                 e.sendEquipmentBreakStatus(slot);
             }
@@ -64,14 +68,14 @@ public class VoidTotemEvent {
     }
 
     public static void voidTotemEvent() {
-        ModEvents.VOID_TOTEM_EVENT.register(VoidTotemEvent::voidTotemCancel);
+        VoidTotemEventCallback.EVENT.register(VoidTotemEvent::voidTotemCancel);
     }
 
     private static boolean useTotem(ItemStack itemStack, LivingEntity livingEntity, DamageSource source) {
-        if(isDimensionBlacklisted(livingEntity) || !isOutOfWorld(source, livingEntity)) return false;
+        if (isDimensionBlacklisted(livingEntity) || !isOutOfWorld(source, livingEntity)) return false;
         var stack = itemStack;
         if (stack.isEmpty()) {
-            if (VoidTotem.CONFIG.USE_TOTEM_FROM_INVENTORY && livingEntity instanceof ServerPlayerEntity serverPlayerEntity)
+            if (VoidTotemFabric.CONFIG.USE_TOTEM_FROM_INVENTORY && livingEntity instanceof ServerPlayerEntity serverPlayerEntity)
                 stack = scanInventory(serverPlayerEntity, ModItems.DURABILITY_TOTEM);
             if (stack.isEmpty())return false;
         }
@@ -87,15 +91,23 @@ public class VoidTotemEvent {
         }
 
         livingEntity.stopRiding();
-        ((LivingEntityAccessor) livingEntity).setFallDamageImmune(true);
+        ((ILivingEntityMixin) livingEntity).setFallDamageImmune(true);
         teleportToSavePosition(livingEntity);
         ModUtils.playActivateAnimation(stack, livingEntity);
-        stack.damage(livingEntity.world.getLevelProperties().isHardcore() ? 5 : 10, livingEntity, (e) ->{
+        stack.damage(livingEntity.world.getLevelProperties().isHardcore() ? cheap() ? 2 : 5 : cheap() ? 5 : 10, livingEntity, (e) ->{
             for (var slot : EquipmentSlot.values()) {
                 e.sendEquipmentBreakStatus(slot);
             }
         });
         if (stack.getDamage() >= stack.getMaxDamage()) stack.decrement(1);
         return true;
+    }
+
+    private static boolean isOutOfWorld(DamageSource source, LivingEntity livingEntity) {
+        return source.isOutOfWorld();
+    }
+
+    private static boolean isDimensionBlacklisted(LivingEntity livingEntity) {
+        return VoidTotem.PLATFORM.getBlacklistedDimensions().contains(livingEntity.world.getRegistryKey().getValue().toString());
     }
 }

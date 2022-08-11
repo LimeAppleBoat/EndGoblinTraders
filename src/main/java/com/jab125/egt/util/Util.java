@@ -8,9 +8,8 @@ import net.minecraft.enchantment.UnbreakingEnchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class Util {
     public static boolean field_2983_f() {

@@ -1,25 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "durability_void_totem",
-  "pattern": [
-    "cec",
-    "EtE",
-    " e "
-  ],
   "key": {
+    "E": {
+      "item": "minecraft:emerald"
+    },
     "c": {
       "item": "minecraft:chorus_fruit"
     },
     "e": {
       "item": "minecraft:ender_eye"
     },
-    "E": {
-      "item": "minecraft:emerald"
-    },
     "t": {
       "item": "endgoblintraders:durability_totem"
     }
   },
+  "pattern": [
+    "cec",
+    "EtE",
+    " e "
+  ],
   "result": {
     "item": "endgoblintraders:durability_void_totem"
   }

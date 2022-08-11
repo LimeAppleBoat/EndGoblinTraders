@@ -20,7 +20,7 @@ public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEnt
 
     public EndGoblinTraderRenderer(EntityRendererFactory.Context context) {
         super(context, new GoblinTraderModel<>(context.getPart(GobTClient.GOBLIN_MODEL_LAYER)), .5F);
-        this.addFeature(new HeldItemFeatureRenderer<>(this));
+        this.addFeature(new HeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
     }
 
     @Override
