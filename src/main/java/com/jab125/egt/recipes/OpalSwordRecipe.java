@@ -1,4 +1,4 @@
-package com.jab125.egt.recipes;
+package com.jab125.egt.recipes; 
 
 import com.google.common.collect.Lists;
 import com.jab125.egt.EGobT;
