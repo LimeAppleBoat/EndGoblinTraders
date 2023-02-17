@@ -1,11 +1,9 @@
 package com.jab125.egt.entities;
 
 import com.jab125.egt.EGobT;
-import net.hat.gt.GobT;
-import net.hat.gt.GobTClient;
-import net.hat.gt.entities.AbstractGoblinEntity;
-import net.hat.gt.entities.GoblinTraderEntity;
-import net.hat.gt.entities.GoblinTraderModel;
+import com.mrcrayfish.goblintraders.client.renderer.entity.GoblinModelLayers;
+import com.mrcrayfish.goblintraders.client.renderer.entity.model.GoblinTraderModel;
+import com.mrcrayfish.goblintraders.entity.AbstractGoblinEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
@@ -15,11 +13,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3f;
 
-public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEntity, GoblinTraderModel<GoblinTraderEntity>> {
+public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEntity, GoblinTraderModel> {
 
 
     public EndGoblinTraderRenderer(EntityRendererFactory.Context context) {
-        super(context, new GoblinTraderModel<>(context.getPart(GobTClient.GOBLIN_MODEL_LAYER)), .5F);
+        super(context, new GoblinTraderModel(context.getPart(GoblinModelLayers.GOBLIN_TRADER)), .5F);
         this.addFeature(new HeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
     }
 
@@ -33,7 +31,7 @@ public class EndGoblinTraderRenderer extends MobEntityRenderer<AbstractGoblinEnt
         if (mobEntity.isUsingItem()) {
             matrixStack.translate(0, -0.15, 0);
         }
-        if (mobEntity.isStunned() && mobEntity.isAlive() && GobT.config.ALL_GOBLIN_TRADERS_CONFIG.FALL) {
+        if (mobEntity.isStunned() && mobEntity.isAlive()) {
             float progress = Math.min(10F, mobEntity.getFallCounter() + g) / 10F;
             matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-mobEntity.getStunRotation()));
             matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90F * progress));

@@ -2,26 +2,7 @@
   "replace": false,
   "trades": [
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:diamond_pickaxe",
-        "count": 1,
-        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_pickaxe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
-      },
-      "payment_item": {
-        "item": "minecraft:diamond_pickaxe",
-        "count": 1,
-        "nbt": "{Damage:0}"
-      },
-      "secondary_payment_item": {
-        "item": "minecraft:netherite_ingot",
-        "count": 24
-      },
-      "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 2,
-      "player_experience": 20,
+      "type": "goblintraders:basic",
       "enchantments": [
         {
           "id": "minecraft:efficiency",
@@ -39,29 +20,27 @@
           "id": "minecraft:mending",
           "level": 1
         }
-      ]
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
+      ],
+      "experience": 20,
+      "max_trades": 32,
       "offer_item": {
-        "item": "minecraft:diamond_axe",
         "count": 1,
-        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
+        "item": "minecraft:diamond_pickaxe",
+        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_pickaxe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
       },
       "payment_item": {
-        "item": "minecraft:diamond_axe",
         "count": 1,
+        "item": "minecraft:diamond_pickaxe",
         "nbt": "{Damage:0}"
       },
-      "secondary_payment_item": {
-        "item": "minecraft:netherite_ingot",
-        "count": 24
-      },
       "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 2,
-      "player_experience": 20,
+      "secondary_payment_item": {
+        "count": 24,
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    {
+      "type": "goblintraders:basic",
       "enchantments": [
         {
           "id": "minecraft:efficiency",
@@ -79,29 +58,27 @@
           "id": "minecraft:mending",
           "level": 1
         }
-      ]
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
+      ],
+      "experience": 20,
+      "max_trades": 32,
       "offer_item": {
-        "item": "minecraft:diamond_axe",
         "count": 1,
+        "item": "minecraft:diamond_axe",
         "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
       },
       "payment_item": {
-        "item": "minecraft:diamond_hoe",
         "count": 1,
+        "item": "minecraft:diamond_axe",
         "nbt": "{Damage:0}"
       },
-      "secondary_payment_item": {
-        "item": "minecraft:netherite_ingot",
-        "count": 24
-      },
       "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 2,
-      "player_experience": 20,
+      "secondary_payment_item": {
+        "count": 24,
+        "item": "minecraft:netherite_ingot"
+      }
+    },
+    {
+      "type": "goblintraders:basic",
       "enchantments": [
         {
           "id": "minecraft:efficiency",
@@ -115,28 +92,43 @@
           "id": "minecraft:mending",
           "level": 1
         }
-      ]
+      ],
+      "experience": 20,
+      "max_trades": 32,
+      "offer_item": {
+        "count": 1,
+        "item": "minecraft:diamond_axe",
+        "nbt": "{Damage:0,display:{Name:'{\"extra\":[{\"color\":\"gold\",\"text\":\"♦\"},{\"text\":\" \"},{\"color\":\"light_purple\",\"translate\":\"item.minecraft.diamond_axe\"},{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"♦\"}],\"text\":\"\"}'}}"
+      },
+      "payment_item": {
+        "count": 1,
+        "item": "minecraft:diamond_hoe",
+        "nbt": "{Damage:0}"
+      },
+      "price_multiplier": 0.0,
+      "secondary_payment_item": {
+        "count": 24,
+        "item": "minecraft:netherite_ingot"
+      }
     },
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
+      "type": "goblintraders:basic",
+      "experience": 900,
+      "max_trades": 32,
       "offer_item": {
-        "item": "endgoblintraders:durability_totem",
         "count": 1,
+        "item": "endgoblintraders:durability_totem",
         "nbt": "{Damage:0}"
       },
       "payment_item": {
-        "item": "minecraft:totem_of_undying",
-        "count": 1
-      },
-      "secondary_payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 15
+        "count": 1,
+        "item": "minecraft:totem_of_undying"
       },
       "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 9,
-      "player_experience": 900
+      "secondary_payment_item": {
+        "count": 15,
+        "item": "endgoblintraders:opal"
+      }
     }
   ]
 }

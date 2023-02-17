@@ -3,18 +3,19 @@ package com.jab125.egt;
 import com.jab125.egt.compat.voidtotem.VoidTotemEvent;
 import com.jab125.egt.config.EndGoblinTradersConfig;
 import com.jab125.egt.init.*;
+import com.jab125.egt.legacy.ContainerTrade;
+import com.jab125.egt.legacy.GobTEvents;
+import com.jab125.egt.legacy.GoblinTraderSpawner;
+import com.jab125.egt.legacy.SpawnHandler;
 import com.jab125.egt.recipes.OpalSwordRecipe;
-import com.jab125.limeappleboat.gobt.api.GobTEvents;
 import com.jab125.thonkutil.api.events.EventTaxi;
-import com.jab125.util.tradehelper.TradeManager;
+import com.mrcrayfish.goblintraders.trades.TradeManager;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.hat.gt.spawning.GoblinTraderSpawner;
-import net.hat.gt.spawning.SpawnHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,6 +63,7 @@ public class EGobT implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        EventTaxi.registerEventTaxiSubscriber(SpawnHandler.class);
         Registry.register(Registry.RECIPE_SERIALIZER, id("opal_sword_potion"), OPAL_SWORD_RECIPE);
         System.out.println(Registry.RECIPE_SERIALIZER.getId(OPAL_SWORD_RECIPE) + ", " + Registry.RECIPE_SERIALIZER.get(new Identifier("opal_sword_potion")));
         //System.exit(0);
@@ -71,6 +73,7 @@ public class EGobT implements ModInitializer {
             VoidTotemEvent.voidTotemEvent();
         }
         TradeManager.instance().registerTrader(ModEntities.END_GOBLIN_TRADER);
+        TradeManager.instance().registerTypeSerializer(ContainerTrade.SERIALIZER);
         AutoConfig.register(EndGoblinTradersConfig.class, Toml4jConfigSerializer::new);
         config = AutoConfig.getConfigHolder(EndGoblinTradersConfig.class).getConfig();
         ModEntities.registerEntities();
@@ -128,11 +131,6 @@ public class EGobT implements ModInitializer {
     }
 
     public static Identifier endGoblinTexture() {
-
-        if (EGobT.config.END_GOBLIN_TRADER_CONFIG.END_GOBLIN_TRADER_ALT_TEXTURE) {
-            return EGobT.id("textures/entity/endgoblintrader/ragna_goblin.png");
-        } else {
-            return EGobT.id("textures/entity/endgoblintrader/end_goblin_trader.png");
-        }
+        return EGobT.id("textures/entity/endgoblintrader/end_goblin_trader.png");
     }
 }

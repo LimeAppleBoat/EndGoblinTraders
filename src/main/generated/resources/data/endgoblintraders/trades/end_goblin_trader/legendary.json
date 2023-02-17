@@ -2,32 +2,30 @@
   "replace": false,
   "trades": [
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:netherite_sword",
-        "count": 1,
-        "nbt": "{Damage:0}"
-      },
-      "payment_item": {
-        "item": "minecraft:dragon_head",
-        "count": 25
-      },
-      "secondary_payment_item": {
-        "item": "minecraft:diamond_sword",
-        "count": 1,
-        "nbt": "{Damage:0}"
-      },
-      "price_multiplier": 0.0,
-      "max_trades": 32,
-      "merchant_experience": 9,
-      "player_experience": 900,
+      "type": "goblintraders:basic",
       "enchantments": [
         {
           "id": "endgoblintraders:opal_infused",
           "level": 1
         }
-      ]
+      ],
+      "experience": 900,
+      "max_trades": 32,
+      "offer_item": {
+        "count": 1,
+        "item": "minecraft:netherite_sword",
+        "nbt": "{Damage:0}"
+      },
+      "payment_item": {
+        "count": 25,
+        "item": "minecraft:dragon_head"
+      },
+      "price_multiplier": 0.0,
+      "secondary_payment_item": {
+        "count": 1,
+        "item": "minecraft:diamond_sword",
+        "nbt": "{Damage:0}"
+      }
     }
   ]
 }

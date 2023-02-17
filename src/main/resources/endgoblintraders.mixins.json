@@ -8,7 +8,6 @@
     "EntityPredicateMixin",
     "InfinityEnchantMixin",
     "ItemPredicateMixin",
-    "VeinGoblinTraderMixin",
     "WaterBucketMixin"
   ],
   "client": [

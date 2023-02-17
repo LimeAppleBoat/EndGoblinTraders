@@ -4,12 +4,11 @@ import com.affehund.voidtotem.VoidTotem;
 import com.jab125.egt.init.ModEnchantments;
 import com.jab125.egt.init.ModEntities;
 import com.jab125.egt.init.ModItems;
-import com.jab125.util.datagen.TradeProvider;
-import com.jab125.util.tradehelper.TradeRarities;
-import com.jab125.util.tradehelper.type.ContainerTrade;
-import com.jab125.util.tradehelper.type.UpgradedBasicTrade;
-import com.jab125.util.tradehelper.type.UpgradedBundleTrade;
-import net.hat.gt.init.ModPotions;
+import com.jab125.egt.init.ModPotions;
+import com.jab125.egt.legacy.ContainerTrade;
+import com.mrcrayfish.goblintraders.datagen.TradeProvider;
+import com.mrcrayfish.goblintraders.trades.TradeRarity;
+import com.mrcrayfish.goblintraders.trades.type.BasicTrade;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataWriter;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -55,69 +54,34 @@ public class EndGoblinTradeProvider extends TradeProvider {
         /* ************************************************************************************** *
          *                                     COMMON                                             *
          * ************************************************************************************** */
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(Items.DIAMOND, 17))
-                .setOfferStack(itemFromPotion(ModPotions.HASTE_EXTENDED))
-                .setPriceMultiplier(0.05F)
-                .setMaxTrades(50)
-                .setMerchantExperience(10)
-                .setPlayerExperience(96)
-                .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(ModItems.OPAL, 5))
-                .setSecondaryPaymentStack(new ItemStack(Items.TOTEM_OF_UNDYING))
-                .setOfferStack(new ItemStack(VoidTotem.PLATFORM.getVoidTotemItem()))
-                .setPriceMultiplier(0.05F)
-                .setMerchantExperience(10)
-                .setMaxTrades(32)
-                .setPlayerExperience(96)
-                .setRequired(false)
-                .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.COMMON, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.ENDER_PEARL, 10))
                 .setOfferStack(itemFromPotion(Potions.SLOW_FALLING))
                 .setPriceMultiplier(0.05F)
                 .setMaxTrades(10)
-                .setMerchantExperience(2)
-                .setPlayerExperience(26)
+                
+                .setExperience(26)
                 .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(Items.EMERALD, 1))
-                .setOfferStack(itemFromPotion(ModPotions.WEAK_NIGHT_VISION))
-                .setPriceMultiplier(0.05F)
-                .setMaxTrades(24)
-                .setMerchantExperience(1)
-                .setPlayerExperience(10)
-                .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(new ItemStack(ModItems.OPAL, 1))
-                .setOfferStack(itemFromPotion(ModPotions.BLINDNESS_EXTENDED_2))
-                .setPriceMultiplier(0.05F)
-                .setMaxTrades(12)
-                .setMerchantExperience(1)
-                .setPlayerExperience(13)
-                .build());
-
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.COMMON, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.END_STONE, 12))
                 .setOfferStack(new ItemStack(Items.AZALEA))
                 .setPriceMultiplier(0F)
                 .setMaxTrades(128)
-                .setMerchantExperience(2)
-                .setPlayerExperience(2)
+                
+                .setExperience(2)
                 .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.COMMON, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.COMMON, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.ENDER_PEARL, 16))
                 .setOfferStack(new ItemStack(Items.PHANTOM_MEMBRANE))
                 .setPriceMultiplier(0F)
                 .setMaxTrades(164)
-                .setMerchantExperience(2)
-                .setPlayerExperience(2)
+                
+                .setExperience(2)
                 .build());
     }
 
@@ -125,14 +89,6 @@ public class EndGoblinTradeProvider extends TradeProvider {
         /* ************************************************************************************** *
          *                                     UNCOMMON                                           *
          * ************************************************************************************** */
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.UNCOMMON, UpgradedBasicTrade.Builder.create()
-                .setPaymentStack(itemFromPotion(ModPotions.POWERFUL_INSTANT_HEALTH))
-                .setOfferStack(new ItemStack(ModItems.OPAL))
-                .setPriceMultiplier(0F)
-                .setMaxTrades(32)
-                .setMerchantExperience(2)
-                .setPlayerExperience(20)
-                .build());
     }
 
     public void registerRareEndGoblinTrades() {
@@ -140,31 +96,29 @@ public class EndGoblinTradeProvider extends TradeProvider {
          *                                      RARE                                              *
          * ************************************************************************************** */
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.RARE, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.RARE, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.NETHERITE_INGOT, 3))
                 .setOfferStack(new ItemStack(Items.DIAMOND_PICKAXE))
                 .setPriceMultiplier(0F)
                 .setMaxTrades(64)
-                .setMerchantExperience(4)
-                .setPlayerExperience(40)
+                .setExperience(40)
                 .build());
 
         ItemStack knockbackStick = new ItemStack(Items.STICK);
         knockbackStick.setCustomName(Text.translatable(Enchantments.KNOCKBACK.getTranslationKey()).append(" ").append(Text.translatable(Items.STICK.getTranslationKey())));
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.RARE, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.RARE, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.NETHERITE_INGOT, 3))
                 .setOfferStack(knockbackStick)
                 .setPriceMultiplier(0F)
                 .setMaxTrades(64)
-                .setMerchantExperience(4)
-                .setPlayerExperience(40)
+                .setExperience(40)
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.KNOCKBACK, 2))
                 .build());
 
         var tip = new ItemStack(ModItems.OPAL_SWORD_TIP);
         var chest = new ItemStack(Items.CHEST);
         chest.setCustomName(Text.translatable("endgoblintraders.opal_sword_chest"));
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.RARE, ContainerTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.RARE, ContainerTrade.Builder.create()
                 .setPaymentStack(new ItemStack(ModItems.OPAL, 64))
                 .setOfferStack(chest)
                 .setContainerItem(new ItemStack(ModItems.OPAL_SWORD), 0)
@@ -185,14 +139,14 @@ public class EndGoblinTradeProvider extends TradeProvider {
         Text axe = Items.DIAMOND_AXE.getName().copy().formatted(Formatting.LIGHT_PURPLE);
         Text pickaxe = Items.DIAMOND_PICKAXE.getName().copy().formatted(Formatting.LIGHT_PURPLE);
         specialDiamondPickaxe.setCustomName(nothing.copy().append(symbol).append(" ").append(pickaxe).append(" ").append(symbol));
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.EPIC, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.EPIC, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.DIAMOND_PICKAXE))
                 .setSecondaryPaymentStack(new ItemStack(Items.NETHERITE_INGOT, 24))
                 .setOfferStack(specialDiamondPickaxe)
                 .setPriceMultiplier(0F)
                 .setMaxTrades(32)
-                .setMerchantExperience(2)
-                .setPlayerExperience(20)
+                
+                .setExperience(20)
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.EFFICIENCY, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.UNBREAKING, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.FORTUNE, 5))
@@ -201,14 +155,14 @@ public class EndGoblinTradeProvider extends TradeProvider {
 
         ItemStack specialDiamondAxe = new ItemStack(Items.DIAMOND_AXE);
         specialDiamondAxe.setCustomName(nothing.copy().append(symbol).append(" ").append(axe).append(" ").append(symbol));
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.EPIC, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.EPIC, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.DIAMOND_AXE))
                 .setSecondaryPaymentStack(new ItemStack(Items.NETHERITE_INGOT, 24))
                 .setOfferStack(specialDiamondAxe)
                 .setPriceMultiplier(0F)
                 .setMaxTrades(32)
-                .setMerchantExperience(2)
-                .setPlayerExperience(20)
+                
+                .setExperience(20)
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.EFFICIENCY, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.UNBREAKING, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.SHARPNESS, 5))
@@ -217,27 +171,26 @@ public class EndGoblinTradeProvider extends TradeProvider {
 
         ItemStack specialDiamondHoe = new ItemStack(Items.DIAMOND_HOE);
         specialDiamondHoe.setCustomName(nothing.copy().append(symbol).append(" ").append(hoe).append(" ").append(symbol));
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.EPIC, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.EPIC, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.DIAMOND_HOE))
                 .setSecondaryPaymentStack(new ItemStack(Items.NETHERITE_INGOT, 24))
                 .setOfferStack(specialDiamondAxe)
                 .setPriceMultiplier(0F)
                 .setMaxTrades(32)
-                .setMerchantExperience(2)
-                .setPlayerExperience(20)
+                
+                .setExperience(20)
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.EFFICIENCY, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.UNBREAKING, 7))
                 .addEnchantment(new EnchantmentLevelEntry(Enchantments.MENDING, 1))
                 .build());
 
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.EPIC, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.EPIC, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.TOTEM_OF_UNDYING))
                 .setSecondaryPaymentStack(new ItemStack(ModItems.OPAL, 15))
                 .setOfferStack(new ItemStack(ModItems.DURABILITY_TOTEM))
                 .setPriceMultiplier(0F)
                 .setMaxTrades(32)
-                .setMerchantExperience(9)
-                .setPlayerExperience(900)
+                .setExperience(900)
                 .build());
     }
 
@@ -245,14 +198,13 @@ public class EndGoblinTradeProvider extends TradeProvider {
         /* ************************************************************************************** *
          *                                    LEGENDARY                                           *
          * ************************************************************************************** */
-        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarities.LEGENDARY, UpgradedBasicTrade.Builder.create()
+        this.addTrade(ModEntities.END_GOBLIN_TRADER, TradeRarity.LEGENDARY, BasicTrade.Builder.create()
                 .setPaymentStack(new ItemStack(Items.DRAGON_HEAD, 25))
                 .setSecondaryPaymentStack(new ItemStack(Items.DIAMOND_SWORD, 1))
                 .setOfferStack(new ItemStack(Items.NETHERITE_SWORD))
                 .setPriceMultiplier(0F)
                 .setMaxTrades(32)
-                .setMerchantExperience(9)
-                .setPlayerExperience(900)
+                .setExperience(900)
                 .addEnchantment(new EnchantmentLevelEntry(ModEnchantments.OPAL_INFUSED, 1))
                 .build());
     }

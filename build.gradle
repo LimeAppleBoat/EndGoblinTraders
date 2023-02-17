@@ -47,12 +47,15 @@ dependencies {
 	modApi ("com.jab125:thonkutil-potions-v0-1.5.1")
 	modApi ("com.jab125:thonkutil-capes-v1-1.4.0")
 	modRuntimeOnly ("com.jab125:thonkutil-legacy-1.1.1")
+	modRuntimeOnly("curse.maven:configured-667378:4010582")
 	modApi ("com.jab125:thonkutil-trades-v1-1.2.1")
 	modApi ("com.jab125:thonkutil-base-1.13.1")
-	modImplementation("net.hat:goblin-traders-1.5.2")
+	modImplementation("curse.maven:goblintraders-667389:4119629")
 
 	modImplementation "com.affehund:voidtotem-fabric-1.19-2.0.0"
-	//modRuntimeOnly "de.guntram.mcmod:crowdin-translate:1.4+1.18"
+	//modRuntimeOnly "de.guntram.mcmod:crowdin-translate:1.4+1.18"\\\
+	runtimeOnly('com.electronwill.night-config:core:3.6.0')
+	runtimeOnly('com.electronwill.night-config:toml:3.6.0')
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.

@@ -1,9 +1,16 @@
 package com.jab125.egt.entities;
 
 import com.jab125.egt.EGobT;
+import com.jab125.egt.init.ModEntities;
 import com.jab125.thonkutil.util.Util;
-import net.hat.gt.entities.AbstractGoblinEntity;
-import net.hat.gt.init.ModPotions;
+import com.mrcrayfish.goblintraders.Config;
+import com.mrcrayfish.goblintraders.entity.AbstractGoblinEntity;
+import com.mrcrayfish.goblintraders.entity.TraderCreatureEntity;
+import com.mrcrayfish.goblintraders.init.ModPotions;
+import com.mrcrayfish.goblintraders.trades.EntityTrades;
+import com.mrcrayfish.goblintraders.trades.IRaritySettings;
+import com.mrcrayfish.goblintraders.trades.TradeManager;
+import com.mrcrayfish.goblintraders.trades.TradeRarity;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -18,25 +25,53 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.village.TradeOfferList;
+import net.minecraft.village.TradeOffers;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     private static NbtCompound PLAYER_QUESTS = new NbtCompound();
 
-    public EndGoblinTraderEntity(EntityType<? extends MerchantEntity> entityType, World world) {
+    public EndGoblinTraderEntity(EntityType<? extends TraderCreatureEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
+    }
+
+    @Override
+    public Identifier getTexture() {
+        return EGobT.endGoblinTexture();
+    }
+
+    @Override
+    protected void populateTradeData() {
+        TradeOfferList offers = this.getOffers();
+        EntityTrades entityTrades = TradeManager.instance().getTrades(ModEntities.END_GOBLIN_TRADER);
+        if (entityTrades != null) {
+            Map<TradeRarity, List<TradeOffers.Factory>> tradeMap = entityTrades.getTradeMap();
+            TradeRarity[] var4 = TradeRarity.values();
+            int var5 = var4.length;
+
+            for (TradeRarity rarity : var4) {
+                IRaritySettings settings = Config.ENTITIES.goblinTrader.trades.getSettings(rarity); //too lazy
+                if (!(settings.includeChance() <= 0.0) && (!(settings.includeChance() < 1.0) || !(this.getRandom().nextDouble() > settings.includeChance()))) {
+                    List<TradeOffers.Factory> trades = tradeMap.get(rarity);
+                    int min = Math.min(settings.getMinValue(), settings.getMaxValue());
+                    int max = Math.max(settings.getMinValue(), settings.getMaxValue());
+                    int count = min + this.getRandom().nextInt(max - min + 1);
+                    this.addTrades(offers, trades, count, rarity.shouldShuffle());
+                }
+            }
+        }
     }
 
     @Override
@@ -57,14 +92,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return PLAYER_QUESTS;
     }
 
-    @Override
-    public Collection<ItemStack> getPreferredFoods() {
-        Collection<ItemStack> preferredFoods = new ArrayList<>();
-        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), ModPotions.POWERFUL_INSTANT_HEALTH)));
-        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING)));
-        preferredFoods.add(Util.toItemStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING)));
-        return preferredFoods;
-    }
 
 //    @Override
 //    protected SoundEvent getAmbientSound() {
@@ -119,14 +146,14 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
     }
 
     @Override
-    public boolean canAttackBack() {
-        //return GobT.config.GOBLIN_HIT_BACK;
-        return EGobT.config.END_GOBLIN_TRADER_CONFIG.HIT_BACK;
+    protected int getMaxRestockDelay() {
+        return 0;
     }
 
     @Override
-    public boolean canSwimToFood() {
-        return false;
+    public boolean canAttackBack() {
+        //return GobT.config.GOBLIN_HIT_BACK;
+        return EGobT.config.END_GOBLIN_TRADER_CONFIG.HIT_BACK;
     }
 
 
@@ -156,12 +183,7 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return true;
     }
 
-    @Override
-    protected void addToInventoryOnSpawn() {
-        this.getInventory().addStack(PotionUtil.setPotion(new ItemStack(Items.POTION), Potions.HEALING));
-    }
 
-    @Override
     public int minSpawnHeight() {
         int minSpawnHeight = 0;
         if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD)
@@ -173,7 +195,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return minSpawnHeight;
     }
 
-    @Override
     public int maxSpawnHeight() {
         int maxSpawnHeight = 0;
         if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD)
@@ -185,7 +206,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return maxSpawnHeight;
     }
 
-    @Override
     public int spawnDelay() {
         int spawnDelay = 2147483647;
         if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD)
@@ -197,7 +217,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return spawnDelay;
     }
 
-    @Override
     public int spawnChance() {
         int spawnChance = 0;
         if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD)
@@ -209,7 +228,6 @@ public class EndGoblinTraderEntity extends AbstractGoblinEntity {
         return spawnChance;
     }
 
-    @Override
     public boolean canSpawn() {
         boolean canSpawn = false;
         if (!world.isClient() && world.getRegistryKey() == World.OVERWORLD)

@@ -2,73 +2,68 @@
   "replace": false,
   "trades": [
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
+      "type": "goblintraders:basic",
+      "experience": 40,
+      "max_trades": 64,
       "offer_item": {
-        "item": "minecraft:diamond_pickaxe",
         "count": 1,
+        "item": "minecraft:diamond_pickaxe",
         "nbt": "{Damage:0}"
       },
       "payment_item": {
-        "item": "minecraft:netherite_ingot",
-        "count": 3
+        "count": 3,
+        "item": "minecraft:netherite_ingot"
       },
-      "price_multiplier": 0.0,
-      "max_trades": 64,
-      "merchant_experience": 4,
-      "player_experience": 40
+      "price_multiplier": 0.0
     },
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:stick",
-        "count": 1,
-        "nbt": "{display:{Name:'{\"extra\":[{\"text\":\" \"},{\"translate\":\"item.minecraft.stick\"}],\"translate\":\"enchantment.minecraft.knockback\"}'}}"
-      },
-      "payment_item": {
-        "item": "minecraft:netherite_ingot",
-        "count": 3
-      },
-      "price_multiplier": 0.0,
-      "max_trades": 64,
-      "merchant_experience": 4,
-      "player_experience": 40,
+      "type": "goblintraders:basic",
       "enchantments": [
         {
           "id": "minecraft:knockback",
           "level": 2
         }
-      ]
+      ],
+      "experience": 40,
+      "max_trades": 64,
+      "offer_item": {
+        "count": 1,
+        "item": "minecraft:stick",
+        "nbt": "{display:{Name:'{\"extra\":[{\"text\":\" \"},{\"translate\":\"item.minecraft.stick\"}],\"translate\":\"enchantment.minecraft.knockback\"}'}}"
+      },
+      "payment_item": {
+        "count": 3,
+        "item": "minecraft:netherite_ingot"
+      },
+      "price_multiplier": 0.0
     },
     {
-      "required": true,
-      "type": "goblintraders:container",
+      "type": "endgoblintraders:container",
+      "container_items": [
+        {
+          "count": 1,
+          "item": "endgoblintraders:opal_sword",
+          "nbt": "{Damage:0}",
+          "slot": 0
+        },
+        {
+          "count": 1,
+          "item": "endgoblintraders:opal_sword_tip",
+          "slot": 1
+        }
+      ],
+      "experience": 100,
+      "max_trades": 1,
       "offer_item": {
-        "item": "minecraft:chest",
         "count": 1,
+        "item": "minecraft:chest",
         "nbt": "{display:{Name:'{\"translate\":\"endgoblintraders.opal_sword_chest\"}'}}"
       },
       "payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 64
+        "count": 64,
+        "item": "endgoblintraders:opal"
       },
-      "price_multiplier": 0.0,
-      "max_trades": 1,
-      "experience": 100,
-      "container_items": [
-        {
-          "slot": 0,
-          "item": "endgoblintraders:opal_sword",
-          "count": 1,
-          "nbt": "{Damage:0}"
-        },
-        {
-          "slot": 1,
-          "item": "endgoblintraders:opal_sword_tip",
-          "count": 1
-        }
-      ]
+      "price_multiplier": 0.0
     }
   ]
 }

@@ -5,6 +5,7 @@ import com.jab125.egt.init.ModEntities;
 import com.jab125.egt.init.ModItems;
 import com.jab125.egt.item.OpalSwordTipTooltipData;
 import com.jab125.egt.item.client.OpalSwordTipTooltipComponent;
+import com.mrcrayfish.goblintraders.client.renderer.entity.model.GoblinTraderModel;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,8 +15,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
-import net.hat.gt.entities.GoblinTraderModel;
-import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.Item;
@@ -55,7 +54,7 @@ public class EGobTClient implements ClientModInitializer {
         }));
         ItemTooltipCallback.EVENT.register(EGobTClient::getTooltip);
         EntityRendererRegistry.register(ModEntities.END_GOBLIN_TRADER, EndGoblinTraderRenderer::new);
-        EntityModelLayerRegistry.registerModelLayer(END_GOBLIN_MODEL_LAYER, GoblinTraderModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(END_GOBLIN_MODEL_LAYER, GoblinTraderModel::createBodyLayer);
     }
 
     private static void getTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip) {

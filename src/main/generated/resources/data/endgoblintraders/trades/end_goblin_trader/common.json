@@ -2,118 +2,46 @@
   "replace": false,
   "trades": [
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
+      "type": "goblintraders:basic",
+      "experience": 26,
+      "max_trades": 10,
       "offer_item": {
-        "item": "minecraft:potion",
         "count": 1,
-        "nbt": "{Potion:\"goblintraders:dig_speed_extended\"}"
-      },
-      "payment_item": {
-        "item": "minecraft:diamond",
-        "count": 17
-      },
-      "max_trades": 50,
-      "merchant_experience": 10,
-      "player_experience": 96
-    },
-    {
-      "required": false,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "voidtotem:totem_of_void_undying",
-        "count": 1
-      },
-      "payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 5
-      },
-      "secondary_payment_item": {
-        "item": "minecraft:totem_of_undying",
-        "count": 1
-      },
-      "max_trades": 32,
-      "merchant_experience": 10,
-      "player_experience": 96
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
         "item": "minecraft:potion",
-        "count": 1,
         "nbt": "{Potion:\"minecraft:slow_falling\"}"
       },
       "payment_item": {
-        "item": "minecraft:ender_pearl",
-        "count": 10
-      },
-      "max_trades": 10,
-      "merchant_experience": 2,
-      "player_experience": 26
+        "count": 10,
+        "item": "minecraft:ender_pearl"
+      }
     },
     {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:potion",
-        "count": 1,
-        "nbt": "{Potion:\"goblintraders:weak_night_vision\"}"
-      },
-      "payment_item": {
-        "item": "minecraft:emerald",
-        "count": 1
-      },
-      "max_trades": 24,
-      "merchant_experience": 1,
-      "player_experience": 10
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:potion",
-        "count": 1,
-        "nbt": "{Potion:\"goblintraders:blindness_extended_2\"}"
-      },
-      "payment_item": {
-        "item": "endgoblintraders:opal",
-        "count": 1
-      },
-      "merchant_experience": 1,
-      "player_experience": 13
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
-      "offer_item": {
-        "item": "minecraft:azalea",
-        "count": 1
-      },
-      "payment_item": {
-        "item": "minecraft:end_stone",
-        "count": 12
-      },
-      "price_multiplier": 0.0,
+      "type": "goblintraders:basic",
+      "experience": 2,
       "max_trades": 128,
-      "merchant_experience": 2,
-      "player_experience": 2
-    },
-    {
-      "required": true,
-      "type": "goblintraders:upgraded_basic",
       "offer_item": {
-        "item": "minecraft:phantom_membrane",
-        "count": 1
+        "count": 1,
+        "item": "minecraft:azalea"
       },
       "payment_item": {
-        "item": "minecraft:ender_pearl",
-        "count": 16
+        "count": 12,
+        "item": "minecraft:end_stone"
       },
-      "price_multiplier": 0.0,
+      "price_multiplier": 0.0
+    },
+    {
+      "type": "goblintraders:basic",
+      "experience": 2,
       "max_trades": 164,
-      "merchant_experience": 2,
-      "player_experience": 2
+      "offer_item": {
+        "count": 1,
+        "item": "minecraft:phantom_membrane"
+      },
+      "payment_item": {
+        "count": 16,
+        "item": "minecraft:ender_pearl"
+      },
+      "price_multiplier": 0.0
     }
   ]
 }
